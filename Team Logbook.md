@@ -7,3 +7,7 @@ The team did not reach a consensus and decided to brainstorm and ponder about th
 
 <h1>November 28, 2022</h1>
 Created team github repository. Created first logbook entries.<br>
+
+<h1>November 30, 2022</h1>
+
+<p>Made a Google doc to start the report and started a trello.</p>
