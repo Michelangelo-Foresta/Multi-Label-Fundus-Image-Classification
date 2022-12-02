@@ -11,3 +11,14 @@ Created team github repository. Created first logbook entries.<br>
 <h1>November 30, 2022</h1>
 
 <p>Made a Google doc to start the report and started a trello.</p>
+
+<h1>December 2, 2022</h1>
+Client is secured and agreed upon by the team. The client is a licenced optician.<br>
+We discussed initial division of labor. Currently the tasks are as follows: <br>
+<ul>
+    <li> Michelangelo: Working on image reading model.</li>
+    <li> Mike: Working on GUI.</li>
+    <li> Thomas: Initial MVC and SQL setup.</li>
+    <li> Andrew: Initial Project Plan documentation. Image processing for model</li>
+</ul>
+Tasks are not exclusive to members. We will assist each other as neccessary.<br>
