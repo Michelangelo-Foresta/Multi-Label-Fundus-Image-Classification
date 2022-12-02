@@ -19,6 +19,6 @@ We discussed initial division of labor. Currently the tasks are as follows: <br>
     <li> Michelangelo: Working on image reading model.</li>
     <li> Mike: Working on GUI.</li>
     <li> Thomas: Initial MVC and SQL setup.</li>
-    <li> Andrew: Initial Project Plan documentation. Image processing for model</li>
+    <li> Andrew: Initial Project Plan documentation. Image processing for model. Trello setup.</li>
 </ul>
 Tasks are not exclusive to members. We will assist each other as neccessary.<br>
