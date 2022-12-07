@@ -22,3 +22,7 @@ We discussed initial division of labor. Currently the tasks are as follows: <br>
     <li> Andrew: Initial Project Plan documentation. Image processing for model. Trello setup.</li>
 </ul>
 Tasks are not exclusive to members. We will assist each other as neccessary.<br>
+
+<h1>December 7, 2022</h1>
+Discussed project plan. Andrew requested feedback from team.<br>
+Mike asked for clarification on GUI design.<br>
