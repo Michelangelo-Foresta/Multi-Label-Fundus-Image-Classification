@@ -26,3 +26,7 @@ Tasks are not exclusive to members. We will assist each other as neccessary.<br>
 <h1>December 7, 2022</h1>
 Discussed project plan. Andrew requested feedback from team.<br>
 Mike asked for clarification on GUI design.<br>
+
+<h1>December 14, 2022</h1>
+Discussed project plan. Team agreed to restructure plan. <br>
+Modified Gannt chart. <br>
