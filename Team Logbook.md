@@ -30,3 +30,6 @@ Mike asked for clarification on GUI design.<br>
 <h1>December 14, 2022</h1>
 Discussed project plan. Team agreed to restructure plan. <br>
 Modified Gannt chart. <br>
+
+<h1>December 15, 2022</h1>
+Reviewed and updated final version of Project plan before submission. <br>
