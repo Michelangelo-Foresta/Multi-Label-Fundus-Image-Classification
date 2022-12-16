@@ -33,3 +33,4 @@ Modified Gannt chart. <br>
 
 <h1>December 15, 2022</h1>
 Reviewed and updated final version of Project plan before submission. <br>
+Discussed structure of presentation. <br>
