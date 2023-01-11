@@ -40,7 +40,7 @@ Discussed next deliverable. <br>
 <ul>
     <li> Michelangelo: Assigned domain analysis. </li>
     <li> Mike: Assigned questionnaire. </li>
-</ul>
+</ul><br>
 
-<h1>January 10, 2023</hi>
-Reviewed and finalized deliverable 2 before submission <br>
+<h1>January 10, 2023</h1>
+Reviewed and finalized deliverable 2 before submission. <br>
