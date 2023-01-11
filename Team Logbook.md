@@ -34,3 +34,13 @@ Modified Gannt chart. <br>
 <h1>December 15, 2022</h1>
 Reviewed and updated final version of Project plan before submission. <br>
 Discussed structure of presentation. <br>
+
+<h1>January 4, 2023</h1>
+Discussed next deliverable. <br>
+<ul>
+    <li> Michelangelo: Assigned domain analysis. </li>
+    <li> Mike: Assigned questionnaire. </li>
+</ul>
+
+<h1>January 10, 2023</hi>
+Reviewed and finalized deliverable 2 before submission <br>
