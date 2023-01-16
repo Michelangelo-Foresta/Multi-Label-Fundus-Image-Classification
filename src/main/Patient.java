@@ -3,13 +3,13 @@ package main;
 import java.time.LocalDate;
 
 public class Patient {
-	private String medicare; 	// 12 character medicare card number
-	private String fName; 		// First Name
-	private String lName; 		// Last Name
+	private String medicare; 			// 12 character medicare card number
+	private String fName; 				// First Name
+	private String lName; 				// Last Name
 	private int age;
 	private char gender;
-	private LocalDate dateOfBirth;
-	private double disease1; 	// 0-1 range
+	private LocalDate dateOfBirth;		// year, month, day
+	private double disease1; 			// 0-1 range
 	private double disease2;
 	private double disease3;
 	private double disease4;

@@ -61,9 +61,9 @@ public class DatabaseConnection {
 //		collection.insertOne(newEntry);
 //	}
 	
-	public static void deleteEntry(String name)
+	public static void deleteEntry(String medicare)
 	{
-		Document query = new Document("name", name);
+		Document query = new Document("medicare", medicare);
 		collection.deleteOne(query);
 	}
 	
@@ -74,12 +74,10 @@ public class DatabaseConnection {
 		try 
 		{
 		    Gson gson = new Gson();
-//		    Item model = gson.fromJson(cursor.next().toJson(), Item.class);
-//		    objectList.add(model);
 		    while(cursor.hasNext())
 		    {
-		    	Document doc = cursor.next();
-		    	Patient model = gson.fromJson(doc.toJson(), Patient.class);
+		    	Document document = cursor.next();
+		    	Patient model = gson.fromJson(document.toJson(), Patient.class);
 			    objectList.add(model);
 		    }
 		} 	
