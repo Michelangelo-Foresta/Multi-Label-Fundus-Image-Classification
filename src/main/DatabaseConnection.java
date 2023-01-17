@@ -41,15 +41,24 @@ public class DatabaseConnection {
 		}
 	}
 	
-//	public static void addEntry(Item item)
-//	{
-//		Document newEntry = new Document("name", item.getName())
-//				.append("price", item.getPrice())
-//				.append("format", item.getFormat())
-//				.append("quantity", item.getQuantity())
-//				.append("store", item.getStore());
-//		collection.insertOne(newEntry);
-//	}
+	public static void addEntry(Patient patient)
+	{
+		Document newEntry = new Document("medicare", patient.getMedicare())
+				.append("fName", patient.getfName())
+				.append("lName", patient.getlName())
+				.append("age", patient.getAge())
+				.append("gender", patient.getGender())
+				.append("dobDay", patient.getDobDay())
+				.append("dobMonth", patient.getDobMonth())
+				.append("dobYear", patient.getDobYear())
+				.append("disease1", patient.getDisease1())
+				.append("disease2", patient.getDisease2())
+				.append("disease3", patient.getDisease3())
+				.append("disease4", patient.getDisease4())
+				.append("disease5", patient.getDisease5())
+				.append("disease6", patient.getDisease6());
+				collection.insertOne(newEntry);
+	}
 //	
 //	public static void addEntry(String name, String price, String format, String quantity, String store)
 //	{	
