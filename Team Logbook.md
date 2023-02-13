@@ -58,9 +58,14 @@ Deliverable 3 assignment.<br>
 Updated and reviewed Deliverable 3 as a team before submission.<br>
 
 <h1>January 27, 2023</h1>
-Deliverable 4 assignment.<br>
+Deliverable 4 assignment. TN working on Deliverable 5.<br>
 <ul>
     <li>MF, AL: User Stories</li>
     <li>MT: GUI mockup</li>
 </ul>
     
+<h1>February 2, 2023</h1>
+Updated and reviewed Deliverable 3 as a team before submission.<br>
+
+<h1>February 5, 2023</h1>
+Team discussed database design. Initial CRUD tests.
