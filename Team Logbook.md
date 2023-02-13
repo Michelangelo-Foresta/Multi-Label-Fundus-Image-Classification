@@ -44,3 +44,13 @@ Discussed next deliverable. <br>
 
 <h1>January 10, 2023</h1>
 Reviewed and finalized deliverable 2 before submission. <br>
+
+<h1>January 20, 2023</h1>
+Deliverable 3 assignment.<br>
+<ul>
+    <li>MF: Class Diagram</li>
+    <li>MT: Use Case Diagram</li>
+    <li>TN: Activity/State Diagram</li>
+    <li>AL: Deployment Diagram</li>
+</ul>
+    
