@@ -55,5 +55,5 @@ Deliverable 3 assignment.<br>
 </ul>
 
 <h1>January 22, 2023</h1>
-Updated and reviewed Deliverable 3.<br>
+Updated and reviewed Deliverable 3 as a team before submission.<br>
     
