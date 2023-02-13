@@ -56,4 +56,11 @@ Deliverable 3 assignment.<br>
 
 <h1>January 22, 2023</h1>
 Updated and reviewed Deliverable 3 as a team before submission.<br>
+
+<h1>January 27, 2023</h1>
+Deliverable 4 assignment.<br>
+<ul>
+    <li>MF, AL: User Stories</li>
+    <li>MT: GUI mockup</li>
+</ul>
     
