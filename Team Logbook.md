@@ -69,3 +69,7 @@ Updated and reviewed Deliverable 3 as a team before submission.<br>
 
 <h1>February 5, 2023</h1>
 Team discussed database design. Initial CRUD tests.
+
+<h1>February 9, 2023</h1>
+TN prepared databse design document.<br>
+AL reviewed and edited document. Ready for submission.<br>
