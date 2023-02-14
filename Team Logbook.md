@@ -68,8 +68,18 @@ Deliverable 4 assignment. TN working on Deliverable 5.<br>
 Updated and reviewed Deliverable 3 as a team before submission.<br>
 
 <h1>February 5, 2023</h1>
-Team discussed database design. Initial CRUD tests.
+Team discussed database design. Initial CRUD tests.<br>
+Coding and implementation begins.<br>
 
 <h1>February 9, 2023</h1>
 TN prepared databse design document.<br>
 AL reviewed and edited document. Ready for submission.<br>
+
+<h1>February 13, 2023</h1>
+Team meeting. Coding tasks reviewed with client feedback.<br>
+<ul>
+    <li>MF: Machine Learning model refinement</li>
+    <li>AL: Image processing, Login credentials</li>
+    <li>MT: Redesign certain GUI pages</li>
+    <li>TN: Database</li>
+</ul>
