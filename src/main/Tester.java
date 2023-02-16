@@ -19,8 +19,10 @@ public class Tester {
 
 		controller.consolePrintPatients();
 		controller.consolePrintDiagnosis();
-//		System.out.println(controller.getpModels());
-//		System.out.println(controller.getdModels());
+		
+//		controller.deleteEntry(medicare);
+//		controller.consolePrintPatients();
+//		controller.consolePrintDiagnosis();
 		
 	}
 

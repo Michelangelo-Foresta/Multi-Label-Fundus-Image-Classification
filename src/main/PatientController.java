@@ -54,6 +54,26 @@ public class PatientController {
 		DatabaseConnection.insertDiagnosis(diagnosis);	
 	}
 	
+	public void deleteEntry(String medicare)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				pModels.remove(pModels.get(i));
+			}
+		}
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				dModels.remove(dModels.get(i));
+			}
+		}
+		DatabaseConnection.deletePatient(medicare);
+		DatabaseConnection.deleteDiagnosis(medicare);
+	}
+	
 	// Getters and setters
 	public PatientView getView() {
 		return view;

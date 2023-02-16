@@ -11,6 +11,7 @@ import org.bson.Document;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.bson.conversions.Bson;
 
 import com.google.gson.Gson;
 import com.mongodb.client.MongoClient;
@@ -18,6 +19,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 public class DatabaseConnection {
 	private static CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
@@ -42,6 +44,17 @@ public class DatabaseConnection {
 		colDiagnosis.insertOne(diagnosis);
 	}
 	
+	public static void deletePatient(String medicare)
+	{
+		Bson filter = Filters.eq("medicare", medicare);
+		colPatient.deleteOne(filter);
+	}
+	
+	public static void deleteDiagnosis(String medicare)
+	{
+		Bson filter = Filters.eq("medicare", medicare);
+		colDiagnosis.deleteOne(filter);
+	}
 	
 	// Getters and setters
 	public CodecProvider getPojoCodecProvider() {
