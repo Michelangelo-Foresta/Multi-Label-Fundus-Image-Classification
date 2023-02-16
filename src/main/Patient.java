@@ -10,7 +10,9 @@ public class Patient {
 	private ObjectId id;
 	private String firstName;
 	private String lastName;
-	private LocalDate dateOfBirth;	// Integer => Year, Month, Day
+	private int dobDay;
+	private int dobMonth;
+	private int dobYear;
 	private String medicare;
 	private String address;
 	private String email;
@@ -27,10 +29,21 @@ public class Patient {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = LocalDate.of(year, month, day);
+		this.dobDay = day;
+		this.dobMonth = month;
+		this.dobYear = year;
 		this.medicare = medicare;
 		this.address = address;
 		this.email = email;
+	}
+
+	
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -49,12 +62,28 @@ public class Patient {
 		this.lastName = lastName;
 	}
 
-	public LocalDate getDateOfBirth() {
-		return this.dateOfBirth;
+	public int getDobDay() {
+		return dobDay;
 	}
 
-	public void setDateOfBirth(int year, int month, int day) {
-		this.dateOfBirth = LocalDate.of(year, month, day);
+	public void setDobDay(int dobDay) {
+		this.dobDay = dobDay;
+	}
+
+	public int getDobMonth() {
+		return dobMonth;
+	}
+
+	public void setDobMonth(int dobMonth) {
+		this.dobMonth = dobMonth;
+	}
+
+	public int getDobYear() {
+		return dobYear;
+	}
+
+	public void setDobYear(int dobYear) {
+		this.dobYear = dobYear;
 	}
 
 	public String getMedicare() {
@@ -83,8 +112,11 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "Patient [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
-				+ ", medicare=" + medicare + ", address=" + address + ", email=" + email + "]";
+		return "Patient [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dobDay=" + dobDay
+				+ ", dobMonth=" + dobMonth + ", dobYear=" + dobYear + ", medicare=" + medicare + ", address=" + address
+				+ ", email=" + email + "]";
 	}
+
+	
 
 }

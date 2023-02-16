@@ -24,8 +24,4 @@ public class PatientView {
 		}
 	}
 	
-	/*
-	 * TODO
-	 * Maybe make view for just patient info and just disease info
-	 */
 }
