@@ -20,6 +20,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 
 public class DatabaseConnection {
 	private static CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
@@ -54,6 +56,44 @@ public class DatabaseConnection {
 	{
 		Bson filter = Filters.eq("medicare", medicare);
 		colDiagnosis.deleteOne(filter);
+	}
+	
+	public static void updatePatient(String medicare, String firstName, String lastName, 
+			int day, int month, int year, String address, String email)
+	{
+		Bson filter = Filters.eq("medicare", medicare);
+		Bson updateFName = Updates.set("firstName", firstName);
+		Bson updateLName = Updates.set("lastName", lastName);
+		Bson updateDay = Updates.set("dobDay", day);
+		Bson updateMonth = Updates.set("dobMonth", month);
+		Bson updateYear = Updates.set("dobYear", year);
+		Bson updateAddress = Updates.set("address", address);
+		Bson updateEmail = Updates.set("email", email);
+		colPatient.updateOne(filter, updateFName);
+		colPatient.updateOne(filter, updateLName);
+		colPatient.updateOne(filter, updateDay);
+		colPatient.updateOne(filter, updateMonth);
+		colPatient.updateOne(filter, updateYear);
+		colPatient.updateOne(filter, updateAddress);
+		colPatient.updateOne(filter, updateEmail);
+	}
+	
+	public static void updateDiagnosis(String medicare, double disease1, double disease2, double disease3,
+			double disease4, double disease5, double disease6)
+	{
+		Bson filter = Filters.eq("medicare", medicare);
+		Bson updateD1 = Updates.set("disease1", disease1);
+		Bson updateD2 = Updates.set("disease2", disease2);
+		Bson updateD3 = Updates.set("disease3", disease3);
+		Bson updateD4 = Updates.set("disease4", disease4);
+		Bson updateD5 = Updates.set("disease5", disease5);
+		Bson updateD6 = Updates.set("disease6", disease6);
+		colDiagnosis.updateOne(filter, updateD1);
+		colDiagnosis.updateOne(filter, updateD2);
+		colDiagnosis.updateOne(filter, updateD3);
+		colDiagnosis.updateOne(filter, updateD4);
+		colDiagnosis.updateOne(filter, updateD5);
+		colDiagnosis.updateOne(filter, updateD6);
 	}
 	
 	// Getters and setters

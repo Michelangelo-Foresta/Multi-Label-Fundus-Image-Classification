@@ -25,6 +25,9 @@ public class PatientController {
 		this.view.printAllDiagnosis(dModels);
 	}
 	
+	/**
+	 * Run once at startup. Retrieves all entries from the database.
+	 */
 	public void retrieveAllData()
 	{
 		DatabaseConnection.colDiagnosis.find().into(this.dModels);
@@ -61,6 +64,7 @@ public class PatientController {
 			if(pModels.get(i).getMedicare().equals(medicare))
 			{
 				pModels.remove(pModels.get(i));
+				break;
 			}
 		}
 		for(int i = 0; i < dModels.size(); i++)
@@ -68,12 +72,71 @@ public class PatientController {
 			if(dModels.get(i).getMedicare().equals(medicare))
 			{
 				dModels.remove(dModels.get(i));
+				break;
 			}
 		}
 		DatabaseConnection.deletePatient(medicare);
 		DatabaseConnection.deleteDiagnosis(medicare);
 	}
 	
+	public void updateEntry(String firstName, String lastName, 
+			int year, int month, int day, 
+			String medicare, String address, String email,
+			double disease1, double disease2,  double disease3,
+			double disease4, double disease5, double disease6)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				pModels.get(i).setFirstName(firstName);
+				pModels.get(i).setLastName(lastName);
+				pModels.get(i).setDobDay(day);
+				pModels.get(i).setDobMonth(month);
+				pModels.get(i).setDobYear(year);
+				pModels.get(i).setAddress(address);
+				pModels.get(i).setEmail(email);
+			}
+		}
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				dModels.get(i).setDisease1(disease1);
+				dModels.get(i).setDisease2(disease2);
+				dModels.get(i).setDisease3(disease3);
+				dModels.get(i).setDisease4(disease4);
+				dModels.get(i).setDisease5(disease5);
+				dModels.get(i).setDisease6(disease6);
+			}
+		}
+		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
+		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6);
+	}
+	
+	public Patient searchPatient(String medicare)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				return pModels.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public Diagnosis searchDiagnosis(String medicare)
+	{
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				return dModels.get(i);
+			}
+		}
+		return null;
+	}
 	// Getters and setters
 	public PatientView getView() {
 		return view;
