@@ -15,6 +15,16 @@ public class PatientController {
 		this.dModels = new ArrayList<Diagnosis>();
 	}
 	
+	public void consolePrintPatients()
+	{
+		this.view.printAllPatients(pModels);
+	}
+	
+	public void consolePrintDiagnosis()
+	{
+		this.view.printAllDiagnosis(dModels);
+	}
+	
 	public void retrieveAllData()
 	{
 		DatabaseConnection.colDiagnosis.find().into(this.dModels);
