@@ -44,3 +44,42 @@ Discussed next deliverable. <br>
 
 <h1>January 10, 2023</h1>
 Reviewed and finalized deliverable 2 before submission. <br>
+
+<h1>January 20, 2023</h1>
+Deliverable 3 assignment.<br>
+<ul>
+    <li>MF: Class Diagram</li>
+    <li>MT: Use Case Diagram</li>
+    <li>TN: Activity/State Diagram</li>
+    <li>AL: Deployment Diagram</li>
+</ul>
+
+<h1>January 22, 2023</h1>
+Updated and reviewed Deliverable 3 as a team before submission.<br>
+
+<h1>January 27, 2023</h1>
+Deliverable 4 assignment. TN working on Deliverable 5.<br>
+<ul>
+    <li>MF, AL: User Stories</li>
+    <li>MT: GUI mockup</li>
+</ul>
+    
+<h1>February 2, 2023</h1>
+Updated and reviewed Deliverable 3 as a team before submission.<br>
+
+<h1>February 5, 2023</h1>
+Team discussed database design. Initial CRUD tests.<br>
+Coding and implementation begins.<br>
+
+<h1>February 9, 2023</h1>
+TN prepared databse design document.<br>
+AL reviewed and edited document. Ready for submission.<br>
+
+<h1>February 13, 2023</h1>
+Team meeting. Coding tasks reviewed with client feedback.<br>
+<ul>
+    <li>MF: Machine Learning model refinement</li>
+    <li>AL: Image processing, Login credentials</li>
+    <li>MT: Redesign certain GUI pages</li>
+    <li>TN: Database</li>
+</ul>

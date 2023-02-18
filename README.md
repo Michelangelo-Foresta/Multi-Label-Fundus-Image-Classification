@@ -1,5 +1,6 @@
 # System-Development-Project
-420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project repository
-FIRST ENTRY 2022-11-28
-
-We created the github group and have finished up our discussion on potential project ideas. We are currently in the process of selecting our client from a short list of picks.
+420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project repository<br>
+Michelangelo Forest, Student# 1462828<br>
+Andrew Lansangan, Student# 1377569<br>
+Thomas Ng, Student# 2295229<br>
+Mike Taheri, Student# 0964831<br>
