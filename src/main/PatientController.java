@@ -1,13 +1,166 @@
 package main;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PatientController {
 	private PatientView view;
-	private ArrayList<Patient> model;
+	private ArrayList<Patient> pModels;
+	private ArrayList<Diagnosis> dModels;
 	
 	public PatientController(PatientView view) {
 		this.view = view;
-		this.model = new ArrayList<Patient>();
+		this.pModels = new ArrayList<Patient>();
+		this.dModels = new ArrayList<Diagnosis>();
 	}
+	
+	public void consolePrintPatients()
+	{
+		this.view.printAllPatients(pModels);
+	}
+	
+	public void consolePrintDiagnosis()
+	{
+		this.view.printAllDiagnosis(dModels);
+	}
+	
+	/**
+	 * Run once at startup. Retrieves all entries from the database.
+	 */
+	public void retrieveAllData()
+	{
+		DatabaseConnection.colDiagnosis.find().into(this.dModels);
+		DatabaseConnection.colPatient.find().into(this.pModels);	
+	}
+	
+	public void insertEntry(Patient patient, Diagnosis diagnosis)
+	{
+		this.pModels.add(patient);
+		this.dModels.add(diagnosis);
+		DatabaseConnection.insertPatient(patient);
+		DatabaseConnection.insertDiagnosis(diagnosis);	
+	}
+	
+	public void insertEntry(String firstName, String lastName, 
+			int year, int month, int day, 
+			String medicare, String address, String email,
+			double disease1, double disease2,  double disease3,
+			double disease4, double disease5, double disease6)
+	{
+		Patient patient = new Patient(firstName, lastName, year, month, day, medicare, address, email);
+		Diagnosis diagnosis = new Diagnosis(medicare, disease1, disease2, disease3,
+				 disease4, disease5, disease6);
+		this.pModels.add(patient);
+		this.dModels.add(diagnosis);
+		DatabaseConnection.insertPatient(patient);
+		DatabaseConnection.insertDiagnosis(diagnosis);	
+	}
+	
+	public void deleteEntry(String medicare)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				pModels.remove(pModels.get(i));
+				break;
+			}
+		}
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				dModels.remove(dModels.get(i));
+				break;
+			}
+		}
+		DatabaseConnection.deletePatient(medicare);
+		DatabaseConnection.deleteDiagnosis(medicare);
+	}
+	
+	public void updateEntry(String firstName, String lastName, 
+			int year, int month, int day, 
+			String medicare, String address, String email,
+			double disease1, double disease2,  double disease3,
+			double disease4, double disease5, double disease6)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				pModels.get(i).setFirstName(firstName);
+				pModels.get(i).setLastName(lastName);
+				pModels.get(i).setDobDay(day);
+				pModels.get(i).setDobMonth(month);
+				pModels.get(i).setDobYear(year);
+				pModels.get(i).setAddress(address);
+				pModels.get(i).setEmail(email);
+			}
+		}
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				dModels.get(i).setDisease1(disease1);
+				dModels.get(i).setDisease2(disease2);
+				dModels.get(i).setDisease3(disease3);
+				dModels.get(i).setDisease4(disease4);
+				dModels.get(i).setDisease5(disease5);
+				dModels.get(i).setDisease6(disease6);
+			}
+		}
+		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
+		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6);
+	}
+	
+	public Patient searchPatient(String medicare)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				return pModels.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public Diagnosis searchDiagnosis(String medicare)
+	{
+		for(int i = 0; i < dModels.size(); i++)
+		{
+			if(dModels.get(i).getMedicare().equals(medicare))
+			{
+				return dModels.get(i);
+			}
+		}
+		return null;
+	}
+	// Getters and setters
+	public PatientView getView() {
+		return view;
+	}
+
+	public void setView(PatientView view) {
+		this.view = view;
+	}
+
+	public ArrayList<Patient> getpModels() {
+		return pModels;
+	}
+
+	public void setpModels(ArrayList<Patient> pModels) {
+		this.pModels = pModels;
+	}
+
+	public ArrayList<Diagnosis> getdModels() {
+		return dModels;
+	}
+
+	public void setdModels(ArrayList<Diagnosis> dModels) {
+		this.dModels = dModels;
+	}
+	
+	
 }

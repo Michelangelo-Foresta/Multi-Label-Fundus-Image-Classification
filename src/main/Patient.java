@@ -2,49 +2,88 @@ package main;
 
 import java.time.LocalDate;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
+
 public class Patient {
-	private String medicare; 			// 12 character medicare card number
-	private String fName; 				// First Name
-	private String lName; 				// Last Name
-	private int age;
-	private char gender;
-	private LocalDate dateOfBirth;		// year, month, day
-	private double disease1; 			// 0-1 range
-	private double disease2;
-	private double disease3;
-	private double disease4;
-	private double disease5;
-	private double disease6;
 	
-	public Patient() {
-		// Default
+	private ObjectId id;
+	private String firstName;
+	private String lastName;
+	private int dobDay;
+	private int dobMonth;
+	private int dobYear;
+	private String medicare;
+	private String address;
+	private String email;
+	
+	public Patient()
+	{
+		// default
 	}
 	
-	public Patient(String medicare, String fName, String lName, int age, char gender, 
-			LocalDate dateOfBirth) {
+	public Patient(String firstName, String lastName, 
+			int year, int month, int day, 
+			String medicare, String address, String email) 
+	{
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dobDay = day;
+		this.dobMonth = month;
+		this.dobYear = year;
 		this.medicare = medicare;
-		this.fName = fName;
-		this.lName = lName;
-		this.age = age;
-		this.gender = gender;
-		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.email = email;
 	}
 
-	public Patient(String medicare, String fName, String lName, int age, char gender, 
-			int dobYear, int dobDay, int dobMonth,
-			double disease1, double disease2, double disease3, double disease4, double disease5, double disease6) {
-		this.medicare = medicare;
-		this.fName = fName;
-		this.lName = lName;
-		this.age = age;
-		this.gender = gender;
-		this.dateOfBirth = LocalDate.of(dobYear, dobDay, dobMonth);
-		this.disease1 = disease1;
-		this.disease2 = disease2;
-		this.disease3 = disease3;
-		this.disease4 = disease4;
-		this.disease5 = disease5;
-		this.disease6 = disease6;
+	
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getDobDay() {
+		return dobDay;
+	}
+
+	public void setDobDay(int dobDay) {
+		this.dobDay = dobDay;
+	}
+
+	public int getDobMonth() {
+		return dobMonth;
+	}
+
+	public void setDobMonth(int dobMonth) {
+		this.dobMonth = dobMonth;
+	}
+
+	public int getDobYear() {
+		return dobYear;
+	}
+
+	public void setDobYear(int dobYear) {
+		this.dobYear = dobYear;
 	}
 
 	public String getMedicare() {
@@ -55,102 +94,29 @@ public class Patient {
 		this.medicare = medicare;
 	}
 
-	public String getfName() {
-		return fName;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getlName() {
-		return lName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public char getGender() {
-		return gender;
-	}
-
-	public void setGender(char gender) {
-		this.gender = gender;
-	}
-
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(int year, int month, int day) {
-		this.dateOfBirth = LocalDate.of(year, month, day);
-	}
-
-	public double getDisease1() {
-		return disease1;
-	}
-
-	public void setDisease1(double disease1) {
-		this.disease1 = disease1;
-	}
-
-	public double getDisease2() {
-		return disease2;
-	}
-
-	public void setDisease2(double disease2) {
-		this.disease2 = disease2;
-	}
-
-	public double getDisease3() {
-		return disease3;
-	}
-
-	public void setDisease3(double disease3) {
-		this.disease3 = disease3;
-	}
-
-	public double getDisease4() {
-		return disease4;
-	}
-
-	public void setDisease4(double disease4) {
-		this.disease4 = disease4;
-	}
-
-	public double getDisease5() {
-		return disease5;
-	}
-
-	public void setDisease5(double disease5) {
-		this.disease5 = disease5;
-	}
-
-	public double getDisease6() {
-		return disease6;
-	}
-
-	public void setDisease6(double disease6) {
-		this.disease6 = disease6;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "Patient [medicare=" + medicare + ", fName=" + fName + ", lName=" + lName + ", age=" + age + ", gender="
-				+ gender + ", dateOfBirth=" + dateOfBirth + ", disease1=" + disease1 + ", disease2=" + disease2
-				+ ", disease3=" + disease3 + ", disease4=" + disease4 + ", disease5=" + disease5 + ", disease6="
-				+ disease6 + "]";
+		return "Patient [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dobDay=" + dobDay
+				+ ", dobMonth=" + dobMonth + ", dobYear=" + dobYear + ", medicare=" + medicare + ", address=" + address
+				+ ", email=" + email + "]";
 	}
+
 	
-	
-	
+
 }

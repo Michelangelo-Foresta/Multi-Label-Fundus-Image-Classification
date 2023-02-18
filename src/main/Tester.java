@@ -1,17 +1,33 @@
 package main;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 public class Tester {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		LocalDate d1 = LocalDate.of(1988, 6, 13);
-//		System.out.println(d1);
+		PatientView view = new PatientView();
+		PatientController controller = new PatientController(view);
+		String medicare = "NGXT2";
+		Patient p1 = new Patient("Tom", "Dom", 1955, 10, 12, medicare, "111 Plain", "dude@mail.com");
+		Diagnosis d1 = new Diagnosis(medicare, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6);
 		
-//		Patient p1 = new Patient("NGXT1111222", "Thomas", "Ng", 34, 'M', 
-//				1988, 6, 13, 1, 2, 3, 4, 5, 6);
-//		System.out.println(p1.getDateOfBirth());
-//		System.out.println(p1);
-		DatabaseConnection.viewAllDocuments();
+		controller.retrieveAllData();
+
+//		controller.insertEntry(p1, d1);
+//		controller.insertEntry("Vlad", "Poop", 1988, 6, 13, medicare, "111 Plain", "dude@mail.com",
+//				1.2, 2.2, 3.2, 4.2, 5.2, 6.2);
+
+		controller.consolePrintPatients();
+		controller.consolePrintDiagnosis();
+		System.out.println("New Result \n =================================== \n");
+//		controller.deleteEntry(medicare);
+		
+//		controller.updateEntry("Carrier", "Fisher", 1970, 1, 2, medicare, "222 Boner", "woman@mail.com",
+//				0, 0, 0, 0, 0, 0);
+		
+		controller.consolePrintPatients();
+		controller.consolePrintDiagnosis();
+		
 	}
 
 }
