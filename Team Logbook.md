@@ -83,3 +83,12 @@ Team meeting. Coding tasks reviewed with client feedback.<br>
     <li>MT: Redesign certain GUI pages</li>
     <li>TN: Database</li>
 </ul>
+
+<h1>February 14, 2023</h1>
+MT: Major update, first deployment of GUI code. <br>
+AL: Added GUI elements. Added PDF export deployment. <br>
+Merged into main, waiting for team comments. <br>
+
+<h1>February 17, 2023</h1>
+TN: Major update, database deployment refactored.<br>
+Merged into main. <br>
