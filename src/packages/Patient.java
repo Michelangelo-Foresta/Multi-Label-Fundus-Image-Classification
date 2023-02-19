@@ -1,8 +1,5 @@
-package main;
+package packages;
 
-import java.time.LocalDate;
-
-import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 public class Patient {

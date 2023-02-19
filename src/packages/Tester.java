@@ -1,7 +1,5 @@
-package main;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+package packages;
+
 public class Tester {
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main;
+package packages;
 
 import org.bson.types.ObjectId;
 

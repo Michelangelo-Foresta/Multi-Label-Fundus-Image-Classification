@@ -1,10 +1,8 @@
-package main;
+package packages;
 
 
-import java.time.LocalDate;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFileChooser;
 
@@ -148,7 +146,7 @@ public class PatientController {
 	
 	public void initController() throws ClassNotFoundException {
 		
-		//handle Individual user button event from main frame
+		//handle Individual user button event from packages frame
 		view.getIndivUserButton().addActionListener(e -> {
 			
 			

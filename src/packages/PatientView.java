@@ -1,4 +1,4 @@
-package main;
+package packages;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -42,7 +41,7 @@ public class PatientView {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
-	//main GUI dimensions
+	//packages GUI dimensions
 	private static int width = 460;
 	private static int height = 400;
 	public PatientView()
