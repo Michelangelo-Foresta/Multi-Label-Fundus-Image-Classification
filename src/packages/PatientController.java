@@ -2,6 +2,7 @@ package packages;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
@@ -11,9 +12,9 @@ public class PatientController {
 	private ArrayList<Patient> pModels;
 	private ArrayList<Diagnosis> dModels;
 	private File file;
-
+	PDFMethods pdfMethods = new PDFMethods();
 	
-	public PatientController(PatientView view) {
+	public PatientController(PatientView view) throws IOException {
 		this.view = view;
 		this.pModels = new ArrayList<Patient>();
 		this.dModels = new ArrayList<Diagnosis>();
@@ -305,8 +306,12 @@ public class PatientController {
 		return file;
 	}
 
-
 	public final void setFile(File file) {
 		this.file = file;
+	}
+
+	public static void convert() {
+
+
 	}
 }

@@ -1,8 +1,10 @@
 package packages;
 
+import java.io.IOException;
+
 public class Tester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		PatientView view = new PatientView();
 		PatientController controller = new PatientController(view);
 		String medicare = "NGXT2";

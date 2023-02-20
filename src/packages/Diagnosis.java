@@ -82,6 +82,4 @@ public class Diagnosis {
 		return "Diagnosis [medicare=" + medicare + ", disease1=" + disease1 + ", disease2=" + disease2 + ", disease3="
 				+ disease3 + ", disease4=" + disease4 + ", disease5=" + disease5 + ", disease6=" + disease6 + "]";
 	}
-	
-	
 }

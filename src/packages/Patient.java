@@ -13,8 +13,8 @@ public class Patient {
 	private String medicare;
 	private String address;
 	private String email;
-	
-	public Patient()
+
+	public Patient(String id, String firstName, String lastName)
 	{
 		// default
 	}
@@ -34,7 +34,7 @@ public class Patient {
 		this.email = email;
 	}
 
-	
+
 	public ObjectId getId() {
 		return id;
 	}
@@ -113,7 +113,4 @@ public class Patient {
 				+ ", dobMonth=" + dobMonth + ", dobYear=" + dobYear + ", medicare=" + medicare + ", address=" + address
 				+ ", email=" + email + "]";
 	}
-
-	
-
 }
