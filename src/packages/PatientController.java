@@ -175,7 +175,7 @@ public class PatientController {
         	String userName = view.getUserName().getText();
         	char[] password = view.getpasswordField().getPassword();
         	
-        	System.out.println("userName = "+ userName + ", passord ="+ String.valueOf(password));
+        	System.out.println("userName = "+ userName + ", password ="+ String.valueOf(password));
         	
             //TODO: verify user name and password and if valid then open clinic frame		
             view.showClinicFrame();
@@ -203,7 +203,7 @@ public class PatientController {
          	
             //String userName = view.getUserName().getText();
          	
-         	//System.out.println("userName = "+ userName + ", passord ="+ String.valueOf(password));
+         	//System.out.println("userName = "+ userName + ", password ="+ String.valueOf(password));
        	
             view.showPatientFrame();
  		});

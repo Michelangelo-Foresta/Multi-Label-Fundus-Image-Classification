@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         // Assemble all the pieces of MVC
-//path of pdf
+        //object of Patient
         Patient patient = new Patient("", "", "");
         new PatientView("Andrew");
         pdfMethod(patient, "diagnosis.pdf");
