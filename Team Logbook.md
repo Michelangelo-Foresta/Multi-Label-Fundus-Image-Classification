@@ -95,3 +95,8 @@ Merged into packages. <br>
 
 <h1>February 20, 2023</h1>
 MF: First deployment of Machine Learning Model.<br>
+
+<h1>February 20, 2023</h1>
+MF + AL: Major refactoring on GUI. Updated PDF implementation. <br>
+TN: Updated Disease model. Initial login credential deployment. <br>
+
