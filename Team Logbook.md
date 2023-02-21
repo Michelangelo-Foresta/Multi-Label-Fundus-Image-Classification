@@ -92,3 +92,6 @@ Merged into packages, waiting for team comments. <br>
 <h1>February 17, 2023</h1>
 TN: Major update, database deployment refactored.<br>
 Merged into packages. <br>
+
+<h1>February 20, 2023</h1>
+MF: First deployment of Machine Learning Model.<br>
