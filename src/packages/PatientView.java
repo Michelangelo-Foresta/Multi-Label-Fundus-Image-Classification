@@ -386,6 +386,21 @@ public class PatientView {
 			printDiagnosis(diagnosis);
 		}
 	}
+	
+	public void printLogin(Login login)
+	{
+		System.out.println("Login: ");
+		System.out.println("Username: " + login.getUserName());
+		System.out.println("Password: " + login.getPassword());
+	}
+	
+	public void printAllLogins(ArrayList<Login> models)
+	{
+		for(Login login: models)
+		{
+			printLogin(login);
+		}
+	}
 
 	public void displayResultMessage(String message)
     {

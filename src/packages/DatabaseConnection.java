@@ -28,6 +28,7 @@ public class DatabaseConnection {
 	 */
 	public static MongoCollection<Patient> colPatient = database.getCollection("Test", Patient.class);
 	public static MongoCollection<Diagnosis> colDiagnosis = database.getCollection("Test1", Diagnosis.class);
+	public static MongoCollection<Login> colLogin = database.getCollection("Login", Login.class);
 	
 	public static void insertPatient(Patient patient)
 	{

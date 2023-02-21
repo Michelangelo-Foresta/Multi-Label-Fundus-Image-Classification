@@ -21,7 +21,7 @@ public class Login {
 		this.password = password;
 	}
 	
-	public boolean correctLogin(String userName, String password, ArrayList<Login> list)
+	public static boolean correctLogin(String userName, String password, ArrayList<Login> list)
 	{
 		for(int i = 0; i < list.size(); i++)
 		{

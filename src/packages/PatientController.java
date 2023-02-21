@@ -11,6 +11,7 @@ public class PatientController {
 	private PatientView view;
 	private ArrayList<Patient> pModels;
 	private ArrayList<Diagnosis> dModels;
+	private ArrayList<Login> lModels;
 	private File file;
 	PDFMethods pdfMethods = new PDFMethods();
 	
@@ -18,6 +19,7 @@ public class PatientController {
 		this.view = view;
 		this.pModels = new ArrayList<Patient>();
 		this.dModels = new ArrayList<Diagnosis>();
+		this.lModels = new ArrayList<Login>();
 	}
 	
 
@@ -31,13 +33,18 @@ public class PatientController {
 		this.view.printAllDiagnosis(dModels);
 	}
 	
+	public void consolePrintLogin()
+	{
+		this.view.printAllLogins(lModels);
+	}
 	/**
 	 * Run once at startup. Retrieves all entries from the database.
 	 */
 	public void retrieveAllData()
 	{
 		DatabaseConnection.colDiagnosis.find().into(this.dModels);
-		DatabaseConnection.colPatient.find().into(this.pModels);	
+		DatabaseConnection.colPatient.find().into(this.pModels);
+		DatabaseConnection.colLogin.find().into(this.lModels);
 	}
 	
 	public void insertEntry(Patient patient, Diagnosis diagnosis)
@@ -148,6 +155,10 @@ public class PatientController {
 		return null;
 	}
 
+	public Boolean verifyLogin(String userName, String password)
+	{
+		return Login.correctLogin(userName, password, lModels);
+	}
 	
 	public void initController() throws ClassNotFoundException {
 		

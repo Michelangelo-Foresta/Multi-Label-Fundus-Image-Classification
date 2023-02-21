@@ -85,9 +85,13 @@ public class Diagnosis {
 	public void setDisease7(double disease7) {
 		this.disease7 = disease7;
 	}
+
 	@Override
 	public String toString() {
-		return "Diagnosis [medicare=" + medicare + ", disease1=" + disease1 + ", disease2=" + disease2 + ", disease3="
-				+ disease3 + ", disease4=" + disease4 + ", disease5=" + disease5 + ", disease6=" + disease6 + "]";
+		return "Diagnosis [id=" + id + ", medicare=" + medicare + ", disease1=" + disease1 + ", disease2=" + disease2
+				+ ", disease3=" + disease3 + ", disease4=" + disease4 + ", disease5=" + disease5 + ", disease6="
+				+ disease6 + ", disease7=" + disease7 + "]";
 	}
+
+	
 }
