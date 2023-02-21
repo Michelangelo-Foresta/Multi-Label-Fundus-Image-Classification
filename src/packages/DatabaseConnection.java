@@ -71,8 +71,10 @@ public class DatabaseConnection {
 		colPatient.updateOne(filter, updateEmail);
 	}
 	
-	public static void updateDiagnosis(String medicare, double disease1, double disease2, double disease3,
-			double disease4, double disease5, double disease6)
+	public static void updateDiagnosis(String medicare,
+			double disease1, double disease2, double disease3,
+			double disease4, double disease5, double disease6,
+			double disease7)
 	{
 		Bson filter = Filters.eq("medicare", medicare);
 		Bson updateD1 = Updates.set("disease1", disease1);
@@ -81,12 +83,14 @@ public class DatabaseConnection {
 		Bson updateD4 = Updates.set("disease4", disease4);
 		Bson updateD5 = Updates.set("disease5", disease5);
 		Bson updateD6 = Updates.set("disease6", disease6);
+		Bson updateD7 = Updates.set("disease7", disease7);
 		colDiagnosis.updateOne(filter, updateD1);
 		colDiagnosis.updateOne(filter, updateD2);
 		colDiagnosis.updateOne(filter, updateD3);
 		colDiagnosis.updateOne(filter, updateD4);
 		colDiagnosis.updateOne(filter, updateD5);
 		colDiagnosis.updateOne(filter, updateD6);
+		colDiagnosis.updateOne(filter, updateD7);
 	}
 	
 	// Getters and setters

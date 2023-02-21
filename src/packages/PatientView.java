@@ -375,7 +375,8 @@ public class PatientView {
 		System.out.println("Disease 3: " + diagnosis.getDisease3());
 		System.out.println("Disease 4: " + diagnosis.getDisease4());
 		System.out.println("Disease 5: " + diagnosis.getDisease5());
-		System.out.println("Disease 6: " + diagnosis.getDisease6() + "\n");
+		System.out.println("Disease 6: " + diagnosis.getDisease6());
+		System.out.println("Disease 7: " + diagnosis.getDisease7() + "\n");
 	}
 	
 	public void printAllDiagnosis(ArrayList<Diagnosis> models) 
