@@ -10,32 +10,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 
 public class PatientView {
 		
 	private JFrame mainFrame, loginFrame, clinicFrame, patientFrame, updateFrame;
 	private JButton indivUserButton, clinicButton, languageButton, loginButton,inputImageButton, updateDBButton;
-	private JButton viewDBButton, createPatientButton, updatePatientButton;
+	private JButton viewDBButton, createPatientButton, updatePatientButton,CreatePatient,export;
 	private JLabel userNameLabel ,passwordLabel ;
 	private JTextField userNameText ;
 	private JPasswordField  passwordFiled;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Patient Frame
-	private JLabel fNameLabel, lNameLabel, medicareLabel, ageLabel, genderLabel;
-	private JLabel dobLabel, dobYearLabel, dobDayLabel, dobMonthLabel, d1Label, d2Label,d3Label,d4Label,d5Label,d6Label;
+	private JLabel fNameLabel, lNameLabel, medicareLabel, ageLabel, genderLabel,emailAddress,address;
+	private JLabel dobLabel, dobYearLabel, dobDayLabel, dobMonthLabel, d1Label, d2Label,d3Label,d4Label,d5Label,d6Label,d7Label;
 	
-	private JTextField fNameTF, lNameTF, medicareTF, ageTF, genderTF;
-	private JTextField dobYearTF, dobDayTF, dobMonthTF, d1TF, d2TF,d3TF,d4TF,d5TF,d6TF;
+	private JTextField fNameTF, lNameTF, medicareTF, ageTF, genderTF,emailAddressTF,addressTF;
+	private JTextField dobYearTF, dobDayTF, dobMonthTF, d1TF, d2TF,d3TF,d4TF,d5TF,d6TF,d7TF;
 	
 	private JButton createButton, searchButton;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,10 +37,7 @@ public class PatientView {
 	//packages GUI dimensions
 	private static int width = 460;
 	private static int height = 400;
-	public PatientView()
-	{
-		// default
-	}
+
 	public PatientView(String title) throws IOException {
 		        
 		mainFrame = new JFrame(title);
@@ -74,6 +64,8 @@ public class PatientView {
 		loginButton = new JButton("Login");
 		
 		viewDBButton = new JButton("View whole DB");
+		CreatePatient = new JButton("Create Patient");
+		export = new JButton("Export PDF");
 		createPatientButton = new JButton("Create Patient");
 		updatePatientButton = new JButton("Update Patient");
 		
@@ -86,12 +78,15 @@ public class PatientView {
 	    dobYearLabel = new JLabel("year");
 	    dobDayLabel = new JLabel("day");
 	    dobMonthLabel = new JLabel("month");
+		address = new JLabel("Address");
+		emailAddress = new JLabel("Email");
 	    d1Label = new JLabel("Disease 1");
 	    d2Label = new JLabel("Disease 2");
 	    d3Label = new JLabel("Disease 3");
 	    d4Label = new JLabel("Disease 4");
 	    d5Label = new JLabel("Disease 5");
 	    d6Label = new JLabel("Disease 6");
+		d7Label = new JLabel("Disease 7");
 	
 	    fNameTF = new JTextField();
 	    lNameTF = new JTextField();
@@ -101,12 +96,15 @@ public class PatientView {
 	    dobYearTF = new JTextField();
 	    dobDayTF= new JTextField();
 	    dobMonthTF = new JTextField();
+		addressTF= new JTextField();
+		emailAddressTF= new JTextField();
 	    d1TF = new JTextField();
 	    d2TF = new JTextField();
 	    d3TF = new JTextField();
 	    d4TF = new JTextField();
 	    d5TF = new JTextField();
 	    d6TF = new JTextField();
+		d7TF = new JTextField();
 		createButton = new JButton("Create");
 		searchButton = new JButton("Search");
 	
@@ -218,6 +216,13 @@ public class PatientView {
 	public JButton getcreatePatientButton() {
         return createPatientButton;
     }
+	public JButton getCreatePatient() {
+		return CreatePatient;
+	}
+
+	public JButton getExport() {
+		return export;
+	}
 	
 	public JButton getUpdatePatientButton() {
         return updatePatientButton;
@@ -249,6 +254,12 @@ public class PatientView {
 
 	public JTextField getMedicareTF() {
 		return medicareTF;
+	}
+	public JTextField getAddressTF() {
+		return addressTF;
+	}
+	public JTextField getEmailAddressTF() {
+		return emailAddressTF;
 	}
 
 	public void setMedicareTF(JTextField medicareTF) {
@@ -334,6 +345,12 @@ public class PatientView {
 	public void setD6TF(JTextField d6tf) {
 		d6TF = d6tf;
 	}
+	public JTextField getD7TF() {
+		return d7TF;
+	}
+	public void setD7TF(JTextField d7tf) {
+		d7TF = d7tf;
+	}
 	
 	public JButton getInputImageButton()
 	{
@@ -344,6 +361,7 @@ public class PatientView {
 	{
 		return updateDBButton;
 	}
+
 
 	
 	public void printPatient(Patient patient)
@@ -375,7 +393,8 @@ public class PatientView {
 		System.out.println("Disease 3: " + diagnosis.getDisease3());
 		System.out.println("Disease 4: " + diagnosis.getDisease4());
 		System.out.println("Disease 5: " + diagnosis.getDisease5());
-		System.out.println("Disease 6: " + diagnosis.getDisease6() + "\n");
+		System.out.println("Disease 6: " + diagnosis.getDisease6() );
+		System.out.println("Disease 7: " + diagnosis.getDisease7() + "\n");
 	}
 	
 	public void printAllDiagnosis(ArrayList<Diagnosis> models) 
@@ -453,7 +472,134 @@ public class PatientView {
 
         loginFrame.getContentPane().setLayout(layout);
     }
-	
+
+	public void individualUser() throws IOException {
+
+		patientFrame = new JFrame("Patient Information");
+		patientFrame.getContentPane().setLayout(new BorderLayout());
+		patientFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	int width = 600;
+	int height = 400;
+    	patientFrame.setSize(width, height);
+    	patientFrame.setLocationRelativeTo(null);
+    	patientFrame.setVisible(true);
+
+    	createButton.addMouseListener(mouseListener);
+    	searchButton.addMouseListener(mouseListener);
+		export.setEnabled(false);
+
+	GroupLayout layout = new GroupLayout(patientFrame.getContentPane());
+    	layout.setAutoCreateGaps(true);
+    	layout.setAutoCreateContainerGaps(true);
+
+    	layout.setHorizontalGroup(layout.createSequentialGroup()
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+
+			        .addGroup(layout.createSequentialGroup()
+				        	.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(fNameLabel,80,80,80))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(fNameTF,120,120,120))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(lNameLabel,80,80,80))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(lNameTF,120,120,120)))
+							// ADDD EMAIL AND ADDRESS
+			.addGroup(layout.createSequentialGroup()
+			        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(medicareLabel,80,80,80))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(medicareTF,120,120,120))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(ageLabel,40,40,40))
+									.addGap(0)
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(ageTF,60,60,60))
+									.addGap(40))
+
+
+			.addGroup(layout.createSequentialGroup()
+			        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(dobLabel,100,100,100))
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(dobYearLabel,30,30,30))
+			.addGap(0)
+				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(dobYearTF,40,40,40))
+			.addGap(20)
+				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				        			.addComponent(dobDayLabel,30,30,30))
+			.addGap(0)
+				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(dobDayTF,40,40,40))
+			.addGap(20)
+			                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+		            		        .addComponent(dobMonthLabel,40,40,40))
+			.addGap(0)
+			                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            		                 .addComponent(dobMonthTF,40,40,40))
+									.addGap(40))
+
+						.addGroup(layout.createSequentialGroup()
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(address,80,80,80))
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(addressTF,120,120,120))
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(emailAddress,40,40,40))
+								.addGap(0)
+								.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addComponent(emailAddressTF,60,60,60))
+								.addGap(40))
+
+			        .addGroup(layout.createSequentialGroup()
+				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				            		.addComponent(CreatePatient,120,120,120)
+									.addGap(20))
+							.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+											.addComponent(export,120,120,120))))
+
+			);
+
+			layout.setVerticalGroup(layout.createSequentialGroup()
+
+					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			        .addGroup(layout.createSequentialGroup()
+
+			            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			            		.addComponent(fNameLabel)
+			            		.addComponent(fNameTF)
+			            		.addComponent(lNameLabel)
+			            		.addComponent(lNameTF))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			            		.addComponent(medicareLabel)
+				                .addComponent(medicareTF)
+				                .addComponent(ageLabel)
+				                .addComponent(ageTF))
+
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				                .addComponent(dobLabel)
+				                .addComponent(dobYearLabel)
+				                .addComponent(dobYearTF)
+				                .addComponent(dobDayLabel)
+				                .addComponent(dobDayTF)
+				                .addComponent(dobMonthLabel)
+				                .addComponent(dobMonthTF))
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+									.addComponent(address)
+									.addComponent(addressTF)
+									.addComponent(emailAddress)
+									.addComponent(emailAddressTF)
+									.addGap(40))
+
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+			            		.addComponent(CreatePatient)
+								.addComponent(export)))));
+
+
+			patientFrame.getContentPane().setLayout(layout);
+
+	}
 	public void showClinicFrame() {
     	
 		loginFrame.dispose();
@@ -484,7 +630,7 @@ public class PatientView {
  				        	.addGap(30)
  				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
  				            		.addComponent(createPatientButton,120,120,120))
- 				            .addGap(30)
+							.addGap(30)
  			                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
  		            		         .addComponent(updatePatientButton,120,120,120)))));
 
@@ -597,22 +743,30 @@ public class PatientView {
 				        			.addComponent(d4Label,80,80,80))
 				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				            		.addComponent(d4TF,120,120,120)))
+
 			        .addGroup(layout.createSequentialGroup()
 			        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				        			.addComponent(d5Label,80,80,80))
 				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				            		.addComponent(d5TF,120,120,120)))
+
 			        .addGroup(layout.createSequentialGroup()
 			        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				        			.addComponent(d6Label,80,80,80))
 				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				            		.addComponent(d6TF,120,120,120)))
-			        
-			        .addGroup(layout.createSequentialGroup()
 
+					.addGroup(layout.createSequentialGroup()
+							.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+									.addComponent(d7Label,80,80,80))
+							.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+									.addComponent(d7TF,120,120,120)))
+									.addGap(40)
+
+			        .addGroup(layout.createSequentialGroup()
 				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				            		.addComponent(createButton,120,120,120))
-				            .addGap(20)
+				            		.addGap(20)
 				            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				            		.addComponent(searchButton,120,120,120))))
 
@@ -668,9 +822,12 @@ public class PatientView {
 			            
 			            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 			            		.addComponent(d6Label)
-				                .addComponent(d6TF)
-				                .addGap(40))
-			            
+				                .addComponent(d6TF))
+
+						.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+								.addComponent(d7Label)
+								.addComponent(d7TF)
+								.addGap(40))
 
 			            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 			            		.addComponent(createButton)
@@ -724,4 +881,7 @@ public class PatientView {
 	
 		     updateFrame.getContentPane().setLayout(layout);
 	}
+
+
+
 }

@@ -14,7 +14,7 @@ public class Patient {
 	private String address;
 	private String email;
 
-	public Patient(String id, String firstName, String lastName)
+	public Patient()
 	{
 		// default
 	}

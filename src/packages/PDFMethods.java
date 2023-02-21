@@ -1,91 +1,91 @@
 package packages;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Map;
 
 public class PDFMethods {
-//    static ArrayList patientList;
-    //static ArrayList diagnosisList;
 
     PDFMethods() {
-        //  Patient patient = new Patient("", "", 0, 0, 0, "", "", "");
-        // Diagnosis diagnosis = new Diagnosis("", 0, 0, 0, 0, 0, 0);
 
-        //patient.toString();
-        //diagnosis.toString();
-/*
-        patientList.add(new Patient(patient.getFirstName(), patient.getLastName(), patient.getDobYear(), patient.getDobMonth(), patient.getDobDay(),
-                patient.getMedicare(), patient.getAddress(), patient.getEmail()));
-
-        diagnosisList.add(new Diagnosis(diagnosis.getMedicare(), diagnosis.getDisease1(), diagnosis.getDisease2(), diagnosis.getDisease3(),
-                diagnosis.getDisease4(), diagnosis.getDisease5(), diagnosis.getDisease6()));
-*/
-        //patientList.add(patient);
-        //diagnosisList.add(diagnosis);
     }
-
-    /*
-//Insert Directory of the path of the file you want to load. Including the filename
-if it does not exist then it will create the file at the specified path.
-Input will be the complete object.
-*/
-    public static void pdfMethod(Patient obj,String Path) throws IOException {
-
-        //patient.toString();
-        //diagnosis.toString();
-/*
-        patientList.add(new Patient(patient.getFirstName(), patient.getLastName(), patient.getDobYear(), patient.getDobMonth(), patient.getDobDay(),
-                patient.getMedicare(), patient.getAddress(), patient.getEmail()));
-
-        diagnosisList.add(new Diagnosis(diagnosis.getMedicare(), diagnosis.getDisease1(), diagnosis.getDisease2(), diagnosis.getDisease3(),
-                diagnosis.getDisease4(), diagnosis.getDisease5(), diagnosis.getDisease6()));
-*/
-        //patientList.add(patient);
-        //diagnosisList.add(diagnosis);
-        //String patient = patientList.get(i).toString();
-        //String diagnosis = diagnosisList.get(i).toString();
-        //patient.toString();
-        //diagnosis.toString();
-
+    public static void createPDF(Patient obj, Map<String,Float> disease, String path) throws IOException {
         //Set the path of the file if it exists, otherwise it will create a new one.
-       // File file = new File(Path);
+        //Declare variables here
+        File file = new File(path);
         PDPage page = new PDPage();
+        PDFont font = PDType1Font.TIMES_ROMAN;
         //Create the object document and load the file pdf file.
         PDDocument document = new PDDocument();
+        document.addPage(page);
 
-        //document = PDDocument.load(file);
+        ////////////////////////////////
 
-        //Instantiate page.
-
-        document.addPage(new PDPage());
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        //If pageNumber is greater than 0 we will be adding a new page into an existing PDF
-
         contentStream.beginText();
-        //set position
-        contentStream.newLineAtOffset(62, 1000);
-        //Pick the font
-        contentStream.setFont(PDType1Font.TIMES_ROMAN, 25);
-        //contentStream.setFont(font, fontSize);
+        contentStream.newLineAtOffset(25, 725);
+        contentStream.setFont(font,12);
+        contentStream.setLeading(14.5f);
 
-        //String of text goes in here
+        contentStream.showText("First name: "+obj.getFirstName());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Last name: "+obj.getLastName());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Date of Birth: "+obj.getDobDay());
+        contentStream.showText("/"+obj.getDobMonth());
+        contentStream.showText("/"+obj.getDobYear());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Medicare: "+obj.getMedicare());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Address: "+ obj.getAddress());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Email address: "+obj.getEmail());
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Macular Degeneration: "+String.valueOf(disease.get("Macular-Degen")));
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Glaucoma: "+String.valueOf(disease.get("Glauc")));
 
-
-
-//        for (int i = 0; i < patientList.size()-1; i++) {
-            contentStream.showText("HELLO WORLD! ");
-//            contentStream.showText(patientList.get(i).toString());
-//        }
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Cataracts: "+String.valueOf(disease.get("Cats")));
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("HyperTension: "+String.valueOf(disease.get("Hyper")));
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Myopia: "+String.valueOf(disease.get("Myopia")));
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Non-Proliferative Diabetes: "+String.valueOf(disease.get("Non-Prolif")));
+        contentStream.newLine();
+        contentStream.newLine();
+        contentStream.showText("Normal: "+String.valueOf(disease.get("Normal")));
+        System.out.println("Content added successfully");
         contentStream.endText();
-
         contentStream.close();
-        document.save(Path);
+
+        //saving document
+        document.save(path+"Diagnosis.pdf");
+        //closing document
         document.close();
     }
+
+
 }

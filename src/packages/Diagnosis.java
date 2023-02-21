@@ -12,17 +12,16 @@ public class Diagnosis {
 	private double disease4;
 	private double disease5;
 	private double disease6;
+
+	private double disease7;
 	
-	public Diagnosis()
-	{
-		// default
-	}
+
 	
 	
-	public Diagnosis(String medicare, 
-			double disease1, double disease2, 
-			double disease3, double disease4,
-			double disease5, double disease6) 
+	public Diagnosis(String medicare,
+					 double disease1, double disease2,
+					 double disease3, double disease4,
+					 double disease5, double disease6, double disease7)
 	{
 		super();
 		this.medicare = medicare;
@@ -32,6 +31,7 @@ public class Diagnosis {
 		this.disease4 = disease4;
 		this.disease5 = disease5;
 		this.disease6 = disease6;
+		this.disease7 = disease7;
 	}
 
 
@@ -77,9 +77,17 @@ public class Diagnosis {
 	public void setDisease6(double disease6) {
 		this.disease6 = disease6;
 	}
+	public double getDisease7() {
+		return disease7;
+	}
+	public void setDisease7(double disease7) {
+		this.disease7 = disease7;
+	}
 	@Override
 	public String toString() {
 		return "Diagnosis [medicare=" + medicare + ", disease1=" + disease1 + ", disease2=" + disease2 + ", disease3="
 				+ disease3 + ", disease4=" + disease4 + ", disease5=" + disease5 + ", disease6=" + disease6 + "]";
 	}
+
+
 }
