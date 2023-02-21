@@ -7,7 +7,7 @@ public class Tester {
 	public static void main(String[] args) throws IOException {
 		PatientView view = new PatientView();
 		PatientController controller = new PatientController(view);
-		String medicare = "NGXT2";
+		String medicare = "AMGK2";
 		Patient p1 = new Patient("Tom", "Dom", 1955, 10, 12, medicare, "111 Plain", "dude@mail.com");
 		Diagnosis d1 = new Diagnosis(medicare, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7);
 		
@@ -21,7 +21,7 @@ public class Tester {
 		controller.consolePrintDiagnosis();
 		System.out.println("New Result \n=================================== \n");
 //		controller.deleteEntry(medicare);
-//		controller.insertEntry(p1, d1);
+		controller.insertEntry(p1, d1);
 		
 //		controller.updateEntry("Carrier", "Fisher", 1970, 1, 2, medicare, "222 Boner", "woman@mail.com",
 //				0, 0, 0, 0, 0, 0, 0);

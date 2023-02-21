@@ -16,7 +16,7 @@ public class Diagnosis {
 	
 	public Diagnosis()
 	{
-		// default
+		// default, DO NOT EDIT THIS CONSTRUCTOR
 	}
 	
 	public Diagnosis(String medicare, 
