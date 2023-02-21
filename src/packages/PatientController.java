@@ -61,8 +61,10 @@ public class PatientController {
 	public void insertEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
-			double disease1, double disease2,  double disease3,
-			double disease4, double disease5, double disease6,double disease7)
+
+			double disease1, double disease2, double disease3,
+			double disease4, double disease5, double disease6,
+			double disease7)
 	{
 		Patient patient = new Patient(firstName, lastName, year, month, day, medicare, address, email);
 		Diagnosis diagnosis = new Diagnosis(medicare, disease1, disease2, disease3,
@@ -98,8 +100,10 @@ public class PatientController {
 	public void updateEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
-			double disease1, double disease2,  double disease3,
-			double disease4, double disease5, double disease6,double disease7)
+
+			double disease1, double disease2, double disease3,
+			double disease4, double disease5, double disease6,
+			double disease7)
 	{
 		for(int i = 0; i < pModels.size(); i++)
 		{
@@ -124,11 +128,13 @@ public class PatientController {
 				dModels.get(i).setDisease4(disease4);
 				dModels.get(i).setDisease5(disease5);
 				dModels.get(i).setDisease6(disease6);
+
 				dModels.get(i).setDisease6(disease7);
 			}
 		}
 		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
 		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
+
 	}
 	
 	public Patient searchPatient(String medicare)

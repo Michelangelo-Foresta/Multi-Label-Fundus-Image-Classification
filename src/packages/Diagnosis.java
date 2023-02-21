@@ -15,14 +15,16 @@ public class Diagnosis {
 
 	private double disease7;
 	
-
-	
-	
-	public Diagnosis(String medicare,
-					 double disease1, double disease2,
-					 double disease3, double disease4,
-					 double disease5, double disease6, double disease7)
+	public Diagnosis()
 	{
+		// default, DO NOT EDIT THIS CONSTRUCTOR
+	}
+	
+	public Diagnosis(String medicare, 
+			double disease1, double disease2, 
+			double disease3, double disease4,
+			double disease5, double disease6,
+			double disease7) {
 		super();
 		this.medicare = medicare;
 		this.disease1 = disease1;
@@ -33,6 +35,8 @@ public class Diagnosis {
 		this.disease6 = disease6;
 		this.disease7 = disease7;
 	}
+
+
 
 
 	public String getMedicare() {

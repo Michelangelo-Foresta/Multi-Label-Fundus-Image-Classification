@@ -16,7 +16,7 @@ public class Patient {
 
 	public Patient()
 	{
-		// default
+		// default, DO NOT EDIT THIS CONSTRUCTOR
 	}
 	
 	public Patient(String firstName, String lastName, 
