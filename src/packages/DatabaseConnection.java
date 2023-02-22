@@ -71,11 +71,10 @@ public class DatabaseConnection {
 		colPatient.updateOne(filter, updateAddress);
 		colPatient.updateOne(filter, updateEmail);
 	}
-	
-	public static void updateDiagnosis(String medicare,
-			double disease1, double disease2, double disease3,
-			double disease4, double disease5, double disease6,
-			double disease7)
+
+	public static void updateDiagnosis(String medicare, double disease1, double disease2, double disease3,
+									   double disease4, double disease5, double disease6, double disease7)
+
 	{
 		Bson filter = Filters.eq("medicare", medicare);
 		Bson updateD1 = Updates.set("disease1", disease1);

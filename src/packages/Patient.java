@@ -13,7 +13,7 @@ public class Patient {
 	private String medicare;
 	private String address;
 	private String email;
-	
+
 	public Patient()
 	{
 		// default, DO NOT EDIT THIS CONSTRUCTOR

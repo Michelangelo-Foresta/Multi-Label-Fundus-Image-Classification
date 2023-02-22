@@ -1,11 +1,19 @@
 package packages;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Tester {
 
 	public static void main(String[] args) throws IOException {
-		PatientView view = new PatientView();
+		PatientView view = new PatientView("Patient1");
 		PatientController controller = new PatientController(view);
 		String medicare = "AMGK2";
 		Patient p1 = new Patient("Tom", "Dom", 1955, 10, 12, medicare, "111 Plain", "dude@mail.com");
@@ -39,3 +47,4 @@ public class Tester {
 	}
 
 }
+

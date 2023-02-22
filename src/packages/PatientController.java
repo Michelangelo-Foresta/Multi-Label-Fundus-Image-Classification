@@ -1,19 +1,29 @@
 package packages;
 
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Map;
 
-import javax.swing.JFileChooser;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class PatientController {
 	private PatientView view;
+	static Patient patient;
+	static String path;
+	static Map<String,Float> disease;
 	private ArrayList<Patient> pModels;
 	private ArrayList<Diagnosis> dModels;
 	private ArrayList<Login> lModels;
 	private File file;
 	PDFMethods pdfMethods = new PDFMethods();
+	private int targetWidth=128;
+	private int targetHeight=128;
 	
 	public PatientController(PatientView view) throws IOException {
 		this.view = view;
@@ -58,6 +68,7 @@ public class PatientController {
 	public void insertEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
+
 			double disease1, double disease2, double disease3,
 			double disease4, double disease5, double disease6,
 			double disease7)
@@ -96,6 +107,7 @@ public class PatientController {
 	public void updateEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
+
 			double disease1, double disease2, double disease3,
 			double disease4, double disease5, double disease6,
 			double disease7)
@@ -123,12 +135,13 @@ public class PatientController {
 				dModels.get(i).setDisease4(disease4);
 				dModels.get(i).setDisease5(disease5);
 				dModels.get(i).setDisease6(disease6);
-				dModels.get(i).setDisease7(disease7);
+
+				dModels.get(i).setDisease6(disease7);
 			}
 		}
 		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
-		DatabaseConnection.updateDiagnosis(medicare, 
-				disease1, disease2, disease3, disease4, disease5, disease6, disease7);
+		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
+
 	}
 	
 	public Patient searchPatient(String medicare)
@@ -164,18 +177,12 @@ public class PatientController {
 		
 		//handle Individual user button event from packages frame
 		view.getIndivUserButton().addActionListener(e -> {
-			
-			
-			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-			int result = fileChooser.showOpenDialog(null);
-			System.out.println("result = "+ result);
-			if (result == JFileChooser.APPROVE_OPTION) 
-			{
-				this.file = fileChooser.getSelectedFile();
-				System.out.println("Selected file: " + this.file.getName());
-				//TODO: the selected file will be used to output diagnosis and export as PDF
+			try {
+				view.individualUser();
+			} catch (IOException ex) {
+				throw new RuntimeException(ex);
 			}
+
 		});
 		
 		//handle the clinic user by loading the login page
@@ -222,10 +229,54 @@ public class PatientController {
        	
             view.showPatientFrame();
  		});
-        
+		view.getExport().addActionListener(e->{
+			try {
+				PDFMethods.createPDF(patient, disease, path);
+			} catch (IOException ex) {
+				throw new RuntimeException(ex);
+			}
+		});
+        view.getCreatePatient().addActionListener(e->{
+			patient = new Patient(view.getfNameTF().getText(), view.getlNameTF().getText(),
+					Integer.parseInt(view.getDobYearTF().getText()), Integer.parseInt(view.getDobMonthTF().getText()), Integer.parseInt(view.getDobDayTF().getText()),
+			view.getMedicareTF().getText(), view.getAddressTF().getText(), view.getEmailAddressTF().getText());
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+			int result = fileChooser.showOpenDialog(null);
+			System.out.println("result = "+ result);
+			if (result == JFileChooser.APPROVE_OPTION)
+			{
+				this.file=fileChooser.getSelectedFile();
+				System.out.println("Selected file: " + this.file.getName());
+				try {
+
+					JFrame window= new JFrame();
+					path = this.file.getParent();
+					ImageIcon con= new ImageIcon(this.file.toURL());
+					window.setVisible(true);
+					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					JLabel label=new JLabel();
+					label.setIcon(con);
+					BufferedImage in = ImageIO.read(this.file);
+					BufferedImage newImg= new BufferedImage(in.getWidth(),in.getHeight(),BufferedImage.TYPE_INT_ARGB);
+					newImg=ResizeImage.resizeImage(newImg, targetWidth, targetHeight);
+					window.setSize(con.getIconWidth(),con.getIconHeight());
+					window.getContentPane().add(label);
+					disease =TrainedModel.getDiagnosis(newImg);
+					view.getExport().setEnabled(true);
+				//	PDFMethods.exportPdfClient(disease,patient);// ADD PDF METHOD
+					System.out.println(disease +"\n"+patient);
+
+				} catch (IOException ex) {
+					throw new RuntimeException(ex);
+				}
+
+			}
+		});
         //handle the create patient having the patient info and opening update DB frame
         view.getCreateButton().addActionListener(e -> {
-         	
+
          	String firstName = view.getfNameTF().getText();
          	String lastName = view.getlNameTF().getText();
          	
@@ -283,7 +334,7 @@ public class PatientController {
         
         //handle view whole DB event
         view.getviewWholeDBButton().addActionListener(e -> {
-						
+			consolePrintPatients();
 			System.out.println("view whole DB = ");
 			//TODO add view whole DB code
 			

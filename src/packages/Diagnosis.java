@@ -12,6 +12,7 @@ public class Diagnosis {
 	private double disease4;
 	private double disease5;
 	private double disease6;
+
 	private double disease7;
 	
 	public Diagnosis()
@@ -23,8 +24,7 @@ public class Diagnosis {
 			double disease1, double disease2, 
 			double disease3, double disease4,
 			double disease5, double disease6,
-			double disease7) 
-	{
+			double disease7) {
 		super();
 		this.medicare = medicare;
 		this.disease1 = disease1;
@@ -35,7 +35,6 @@ public class Diagnosis {
 		this.disease6 = disease6;
 		this.disease7 = disease7;
 	}
-
 
 	public String getMedicare() {
 		return medicare;
@@ -93,5 +92,4 @@ public class Diagnosis {
 				+ disease6 + ", disease7=" + disease7 + "]";
 	}
 
-	
 }
