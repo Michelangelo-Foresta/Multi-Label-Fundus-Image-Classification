@@ -94,10 +94,15 @@ TN: Major update, database deployment refactored.<br>
 Merged into packages. <br>
 
 <h1>February 20, 2023</h1>
-MF: First deployment of Machine Learning Model.<br>
+MF: First deployment of Machine Learning Model. <br>
+AL: PDF implementation incorrect, troubleshooting. <br>
 
 <h1>February 21, 2023</h1>
 MF + AL: Major refactoring on GUI. Updated PDF implementation. <br>
 TN: Updated Disease model. Initial login credential deployment. <br>
-All members discuss demonstration prep. <br>
+MT: Drafted dictionary for French/English Locale. <br>
+All members discuss demonstration preparation. <br>
 
+
+<h1>February 23, 2023</h1>
+TN + MF: Added some action listener functionality. <br>
