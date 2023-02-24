@@ -141,7 +141,7 @@ public class PatientController {
 		}
 		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
 		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
-
+		
 	}
 	
 	public Patient searchPatient(String medicare)
