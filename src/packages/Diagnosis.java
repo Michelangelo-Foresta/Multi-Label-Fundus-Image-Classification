@@ -14,17 +14,26 @@ public class Diagnosis {
 	private double disease6;
 
 	private double disease7;
+
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public Diagnosis(){}
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// DONT FUCKING DELETE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 
-	
-	
+
 	public Diagnosis(String medicare,
 					 double disease1, double disease2,
 					 double disease3, double disease4,
 					 double disease5, double disease6, double disease7)
 	{
 		super();
-		this.medicare = medicare;
+		this.medicare=medicare;
 		this.disease1 = disease1;
 		this.disease2 = disease2;
 		this.disease3 = disease3;

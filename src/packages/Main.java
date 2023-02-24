@@ -11,6 +11,8 @@ public class Main {
 
         PatientView view = new PatientView("Eye Disease Diagnostic System");
         PatientController pController = new PatientController(view);
+        pController.retrieveAllData();
         pController.initController();
+
     }
 }
