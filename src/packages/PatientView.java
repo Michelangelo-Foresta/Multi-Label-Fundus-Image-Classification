@@ -8,36 +8,28 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
-
-
 public class PatientView {
-//	static ResourceBundle bundle;
-	private JFrame mainFrame, loginFrame, clinicFrame, patientFrame, updateFrame,showDb,DbFrame;
+	private JFrame mainFrame, loginFrame, clinicFrame, patientFrame, showDb,DbFrame;
 	static JFrame showPatient,indivUserFram;
-	private JButton indivUserButton, clinicButton, languageButton, loginButton,inputImageButton, updateDBButton;
-	private JButton viewDBButton, createPatientButton, updatePatientButton,CreatePatient,export;
+	private JButton indivUserButton, clinicButton, languageButton, loginButton,viewDBButton, createPatientButton, updateDBButton,updatePatientButton,CreatePatient,export;
+
 	private JLabel userNameLabel ,passwordLabel ;
 	private JTextField userNameText ;
 	private JPasswordField  passwordFiled;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Patient Frame
-	private JLabel fNameLabel, lNameLabel, medicareLabel, ageLabel, genderLabel,emailAddress,address;
-	private JLabel dobLabel, dobYearLabel, dobDayLabel, dobMonthLabel, d1Label, d2Label,d3Label,d4Label,d5Label,d6Label,d7Label;
+	private JLabel fNameLabel, lNameLabel, medicareLabel,emailAddress,address;
+	private JLabel dobLabel, dobYearLabel, dobDayLabel, dobMonthLabel;
 	
-	private JTextField fNameTF, lNameTF, medicareTF, ageTF, genderTF,emailAddressTF,addressTF;
-	private JTextField dobYearTF, dobDayTF, dobMonthTF, d1TF, d2TF,d3TF,d4TF,d5TF,d6TF,d7TF;
+	private JTextField fNameTF, lNameTF, medicareTF, emailAddressTF,addressTF;
+	private JTextField dobYearTF, dobDayTF, dobMonthTF;
 	
 	private JButton createButton, searchButton;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
 
 	//packages GUI dimensions
 	private static int width = 460;
@@ -84,40 +76,18 @@ public class PatientView {
 	    dobMonthLabel = new JLabel("month");
 		address = new JLabel("Address");
 		emailAddress = new JLabel("Email");
-	    d1Label = new JLabel("Disease 1");
-	    d2Label = new JLabel("Disease 2");
-	    d3Label = new JLabel("Disease 3");
-	    d4Label = new JLabel("Disease 4");
-	    d5Label = new JLabel("Disease 5");
-	    d6Label = new JLabel("Disease 6");
-		d7Label = new JLabel("Disease 7");
+
 	
 	    fNameTF = new JTextField();
 	    lNameTF = new JTextField();
 	    medicareTF = new JTextField();
-	    ageTF = new JTextField();
-	    genderTF = new JTextField();
 	    dobYearTF = new JTextField();
 	    dobDayTF= new JTextField();
 	    dobMonthTF = new JTextField();
 		addressTF= new JTextField();
 		emailAddressTF= new JTextField();
-	    d1TF = new JTextField();
-	    d2TF = new JTextField();
-	    d3TF = new JTextField();
-	    d4TF = new JTextField();
-	    d5TF = new JTextField();
-	    d6TF = new JTextField();
-		d7TF = new JTextField();
 		createButton = new JButton("Create");
 		searchButton = new JButton("Search");
-	
-		
-		
-		inputImageButton = new JButton("Input Image");
-		updateDBButton = new JButton("Update DB");
-
-
 
 		//mainFrame 
 	    mainFrame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("purple.jpg")))));
@@ -160,29 +130,22 @@ public class PatientView {
 	
 	MouseListener mouseListener = (MouseListener) new MouseAdapter() 
    	{
-   	     
    		 JButton button;
    		 Color c;
    		 @Override 
    		 public void mouseEntered(MouseEvent e) {
-   	    	  
    	    	  button = (JButton) e.getSource();
    	    	  c = button.getBackground();
    	    	  button.setBackground(Color.YELLOW);
    	      }
-   	      
    	      @Override
    	      public void mouseExited(MouseEvent e) {
    	    	  button = (JButton) e.getSource();
    	    	  button.setBackground(c);
    	  	  }
-   	      
    	 };
 
-	public JFrame getFrame() {
-		return mainFrame;
-    }
-	
+	public JFrame getIndivFrame(){return indivUserFram;}
 	public void setFrame(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
@@ -190,74 +153,53 @@ public class PatientView {
     public JButton getIndivUserButton() {
         return indivUserButton;
     }
- 
-        
-    public JButton getClinicButton() {
-        return clinicButton;
-    }
-    
+    public JButton getClinicButton() {return clinicButton;}
     public JButton getLanguageButton() {
         return languageButton;
     }
-    
     public JButton getLoginButton() {
         return loginButton;
     }
-    
+	public JButton getviewWholeDBButton() {
+		return viewDBButton;
+	}
+	public JButton getcreatePatientButton() {
+		return createPatientButton;
+	}
+	public JButton getCreatePatient() {
+		return CreatePatient;
+	}
+	public JButton getExport() {
+		return export;
+	}
+	public JButton getUpdatePatientButton() {
+		return updatePatientButton;
+	}
+	public JButton getCreateButton() {
+		return createButton;
+	}
+	public JButton getSearchButton() {
+		return searchButton;
+	}
+	public JButton getUpdateDBButton(){return updateDBButton;}
+
     public JTextField getUserName() {
         return userNameText;
     }
-    
     public JPasswordField getpasswordField() {
         return passwordFiled;
     }
 	
-	public JButton getviewWholeDBButton() {
-        return viewDBButton;
-    }
-	public void pressDBButton() {
-		viewDBButton.doClick();
-	}
-	
-	public JButton getcreatePatientButton() {
-        return createPatientButton;
-    }
-	public JButton getCreatePatient() {
-		return CreatePatient;
-	}
 
-	public JButton getExport() {
-		return export;
-	}
+	public void pressDBButton() {viewDBButton.doClick();}
 	
-	public JButton getUpdatePatientButton() {
-        return updatePatientButton;
-    }
-	
-	public JButton getCreateButton() {
-        return createButton;
-    }
-	
-	public JButton getSearchButton() {
-        return searchButton;
-    }
-	
+
 	public JTextField getfNameTF() {
 		return fNameTF;
 	}
-
-	public void setfNameTF(JTextField fNameTF) {
-		this.fNameTF = fNameTF;
-	}
-
 	public JTextField getlNameTF() {
 		return lNameTF;
 	}
-
-	public void setlNameTF(JTextField lNameTF) {
-		this.lNameTF = lNameTF;
-	}
-
 	public JTextField getMedicareTF() {
 		return medicareTF;
 	}
@@ -267,149 +209,35 @@ public class PatientView {
 	public JTextField getEmailAddressTF() {
 		return emailAddressTF;
 	}
-
-	public void setMedicareTF(JTextField medicareTF) {
-		this.medicareTF = medicareTF;
-	}
-
-	public JTextField getGenderTF() {
-		return genderTF;
-	}
-
-	public void setGenderTF(JTextField genderTF) {
-		this.genderTF = genderTF;
-	}
-
 	public JTextField getDobYearTF() {
 		return dobYearTF;
 	}
-
-	public void setDobYearTF(JTextField dobYearTF) {
-		this.dobYearTF = dobYearTF;
+	public JTextField getDobMonthTF() {
+		return dobMonthTF;
 	}
-
 	public JTextField getDobDayTF() {
 		return dobDayTF;
 	}
 
+	public void setMedicareTF(JTextField medicareTF) {
+		this.medicareTF = medicareTF;
+	}
+	public void setfNameTF(JTextField fNameTF) {
+		this.fNameTF = fNameTF;
+	}
+	public void setlNameTF(JTextField lNameTF) {
+		this.lNameTF = lNameTF;
+	}
+	public void setDobYearTF(JTextField dobYearTF) {
+		this.dobYearTF = dobYearTF;
+	}
+	public void setDobMonthTF(JTextField dobMonthTF) {
+		this.dobMonthTF = dobMonthTF;
+	}
 	public void setDobDayTF(JTextField dobDayTF) {
 		this.dobDayTF = dobDayTF;
 	}
 
-	public JTextField getDobMonthTF() {
-		return dobMonthTF;
-	}
-
-	public void setDobMonthTF(JTextField dobMonthTF) {
-		this.dobMonthTF = dobMonthTF;
-	}
-
-	public JTextField getD1TF() {
-		return d1TF;
-	}
-
-	public void setD1TF(JTextField d1tf) {
-		d1TF = d1tf;
-	}
-
-	public JTextField getD2TF() {
-		return d2TF;
-	}
-
-	public void setD2TF(JTextField d2tf) {
-		d2TF = d2tf;
-	}
-
-	public JTextField getD3TF() {
-		return d3TF;
-	}
-
-	public void setD3TF(JTextField d3tf) {
-		d3TF = d3tf;
-	}
-
-	public JTextField getD4TF() {
-		return d4TF;
-	}
-
-	public void setD4TF(JTextField d4tf) {
-		d4TF = d4tf;
-	}
-
-	public JTextField getD5TF() {
-		return d5TF;
-	}
-
-	public void setD5TF(JTextField d5tf) {
-		d5TF = d5tf;
-	}
-
-	public JTextField getD6TF() {
-		return d6TF;
-	}
-
-	public void setD6TF(JTextField d6tf) {
-		d6TF = d6tf;
-	}
-	public JTextField getD7TF() {
-		return d7TF;
-	}
-	public void setD7TF(JTextField d7tf) {
-		d7TF = d7tf;
-	}
-	
-	public JButton getInputImageButton()
-	{
-		return inputImageButton;
-	}
-	
-	public JButton getUpdateDBButton()
-	{
-		return updateDBButton;
-	}
-
-
-	
-	public void printPatient(Patient patient)
-	{	
-		System.out.println("Patient Information: ");
-		System.out.println("First name: " + patient.getFirstName());
-		System.out.println("Last Name: " + patient.getLastName());
-		System.out.println("Date of Birth: Day:" + patient.getDobDay() + "/Month:" + patient.getDobMonth() +
-				"/Year:" + patient.getDobYear());
-		System.out.println("Medicare: " + patient.getMedicare());
-		System.out.println("Address: " + patient.getAddress());
-		System.out.println("E-mail: " + patient.getEmail() + "\n");
-	}
-	
-	public void printAllPatients(ArrayList<Patient> models) 
-	{
-		for(Patient patient: models) 
-		{
-			printPatient(patient);
-		}
-	}
-	
-	public void printDiagnosis(Diagnosis diagnosis)
-	{
-		System.out.println("Diagnosis: ");
-		System.out.println("Medicare: " + diagnosis.getMedicare());
-		System.out.println("Disease 1: " + diagnosis.getDisease1());
-		System.out.println("Disease 2: " + diagnosis.getDisease2());
-		System.out.println("Disease 3: " + diagnosis.getDisease3());
-		System.out.println("Disease 4: " + diagnosis.getDisease4());
-		System.out.println("Disease 5: " + diagnosis.getDisease5());
-		System.out.println("Disease 6: " + diagnosis.getDisease6() );
-		System.out.println("Disease 7: " + diagnosis.getDisease7() + "\n");
-	}
-	
-	public void printAllDiagnosis(ArrayList<Diagnosis> models) 
-	{
-		for(Diagnosis diagnosis: models) 
-		{
-			printDiagnosis(diagnosis);
-		}
-	}
 
 	public void displayResultMessage(String message)
     {
@@ -419,15 +247,11 @@ public class PatientView {
 	public void showLoginFrame() {
     	
 		loginFrame = new JFrame("Login");
-
     	loginFrame.getContentPane().setLayout(new BorderLayout());
     	loginFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	int width = 300;
-    	int height = 200;
     	loginFrame.setSize(width, height);
     	loginFrame.setLocationRelativeTo(null);
-    	loginFrame.setVisible(true); 
-    	
+    	loginFrame.setVisible(true);
     	loginButton.addMouseListener(mouseListener);
     		
     	    	  		
@@ -478,10 +302,6 @@ public class PatientView {
 
         loginFrame.getContentPane().setLayout(layout);
     }
-
-	public JFrame getIndivFrame(){
-		return indivUserFram;
-	}
 	public void individualUser()  {
 
 		indivUserFram = new JFrame("Patient Information");
@@ -778,14 +598,11 @@ public void searchPatient(){
 	patientFrame = new JFrame("Search Patient");
 	patientFrame.getContentPane().setLayout(new BorderLayout());
 	patientFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	int width = 600;
-	int height = 400;
 	patientFrame.setSize(width, height);
 	patientFrame.setLocationRelativeTo(null);
 	patientFrame.setVisible(true);
 
 	searchButton.addMouseListener(mouseListener);
-	export.setEnabled(false);
 
 	GroupLayout layout = new GroupLayout(patientFrame.getContentPane());
 	layout.setAutoCreateGaps(true);
@@ -828,8 +645,6 @@ public void searchPatient(){
 		DbFrame = new JFrame("Update Patient Information");
 		DbFrame.getContentPane().setLayout(new BorderLayout());
 		DbFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		int width = 600;
-		int height = 400;
 		DbFrame.setSize(width, height);
 		DbFrame.setLocationRelativeTo(null);
 		DbFrame.setVisible(true);
@@ -943,8 +758,6 @@ public void searchPatient(){
 		showDb = new JFrame("Database");
 		showDb.getContentPane().setLayout(new BorderLayout());
 		showDb.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		int width = 800;
-		int height = 300;
 		showDb.setSize(width, height);
 		showDb.setLocationRelativeTo(null);
 		showDb.setVisible(true);
