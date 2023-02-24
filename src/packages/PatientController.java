@@ -165,7 +165,6 @@ public class PatientController {
 
 			String userName = view.getUserName().getText();
 			char[] password = view.getpasswordField().getPassword();
-			System.out.println("userName = "+ userName + ", password ="+ String.valueOf(password));
 
 			view.showClinicFrame();
 		});
@@ -187,8 +186,10 @@ public class PatientController {
 
 		// COMPLETED
 		view.getExport().addActionListener(e->{
+			view.getExport().setEnabled(false);
 			try {
 				PDFMethods.createPDF(patient, disease, path);
+				view.getExport().setEnabled(false);
 			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
@@ -196,6 +197,7 @@ public class PatientController {
 
 		// COMPLETED
         view.getCreatePatient().addActionListener(e->{
+			view.getCreatePatient().setEnabled(false);
 			patient = new Patient(view.getfNameTF().getText(), view.getlNameTF().getText(),
 					Integer.parseInt(view.getDobYearTF().getText()), Integer.parseInt(view.getDobMonthTF().getText()), Integer.parseInt(view.getDobDayTF().getText()),
 			view.getMedicareTF().getText(), view.getAddressTF().getText(), view.getEmailAddressTF().getText());
@@ -203,11 +205,9 @@ public class PatientController {
 			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
 			int result = fileChooser.showOpenDialog(null);
-			System.out.println("result = "+ result);
 			if (result == JFileChooser.APPROVE_OPTION)
 			{
 				this.file=fileChooser.getSelectedFile();
-				System.out.println("Selected file: " + this.file.getName());
 				try {
 
 					JFrame window= new JFrame();
@@ -224,9 +224,8 @@ public class PatientController {
 					window.setSize(con.getIconWidth(),con.getIconHeight());
 					window.getContentPane().add(label);
 					disease =TrainedModel.getDiagnosis(newImg);
-					view.getExport().setEnabled(true);
-					System.out.println(disease +"\n"+patient);
 					DatabaseConnection.insertPatient(patient);
+					view.getExport().setEnabled(true);
 
 				} catch (IOException ex) {
 					throw new RuntimeException(ex);
@@ -237,6 +236,7 @@ public class PatientController {
 
         // COMPLETED
         view.getCreateButton().addActionListener(e -> {
+			view.getCreateButton().setEnabled(true);
 			patient = new Patient(view.getfNameTF().getText(), view.getlNameTF().getText(),
 					Integer.parseInt(view.getDobYearTF().getText()), Integer.parseInt(view.getDobMonthTF().getText()), Integer.parseInt(view.getDobDayTF().getText()),
 					view.getMedicareTF().getText(), view.getAddressTF().getText(), view.getEmailAddressTF().getText());
@@ -264,7 +264,7 @@ public class PatientController {
 					disease =TrainedModel.getDiagnosis(newImg);
 					Diagnosis diagnosis = new Diagnosis(patient.getMedicare(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
 					insertEntry(patient,diagnosis);
-
+					view.getCreateButton().setEnabled(false);
 				} catch (IOException ex) {
 					throw new RuntimeException(ex);
 				}

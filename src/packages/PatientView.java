@@ -1,5 +1,7 @@
 package packages;
 
+import com.sun.security.auth.module.JndiLoginModule;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -62,7 +64,7 @@ public class PatientView {
 		loginButton = new JButton("Login");
 		
 		viewDBButton = new JButton("View whole DB");
-		CreatePatient = new JButton("Create Patient");
+		CreatePatient = new JButton("Input Image");
 		export = new JButton("Export PDF");
 		createPatientButton = new JButton("Create Patient");
 		updatePatientButton = new JButton("Update Patient");
@@ -86,8 +88,9 @@ public class PatientView {
 	    dobMonthTF = new JTextField();
 		addressTF= new JTextField();
 		emailAddressTF= new JTextField();
-		createButton = new JButton("Create");
+		createButton = new JButton("Input Image");
 		searchButton = new JButton("Search");
+		updateDBButton=new JButton("Update DB");
 
 		//mainFrame 
 	    mainFrame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("purple.jpg")))));
@@ -313,8 +316,7 @@ public class PatientView {
 		indivUserFram.setLocationRelativeTo(null);
 		indivUserFram.setVisible(true);
 
-    	createButton.addMouseListener(mouseListener);
-    	searchButton.addMouseListener(mouseListener);
+    	export.addMouseListener(mouseListener);
 		export.setEnabled(false);
 
 	GroupLayout layout = new GroupLayout(indivUserFram.getContentPane());
@@ -475,7 +477,6 @@ public class PatientView {
 		return showPatient;
 	}
 	public void showPatientFrame() {
-		patientFrame.dispose();
 		showPatient = new JFrame("Create Patient");
 		showPatient.getContentPane().setLayout(new BorderLayout());
 		showPatient.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
