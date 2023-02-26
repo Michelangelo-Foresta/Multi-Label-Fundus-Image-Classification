@@ -16,10 +16,10 @@ Created team github repository. Created first logbook entries.<br>
 Client is secured and agreed upon by the team. The client is a licenced optician.<br>
 We discussed initial division of labor. Currently the tasks are as follows: <br>
 <ul>
-    <li> Michelangelo: Working on image reading model.</li>
-    <li> Mike: Working on GUI.</li>
-    <li> Thomas: Initial MVC and SQL setup.</li>
-    <li> Andrew: Initial Project Plan documentation. Image processing for model. Trello setup.</li>
+    <li> Michelangelo(MF): Working on image reading model.</li>
+    <li> Mike(MT): Working on GUI.</li>
+    <li> Thomas(TN): Initial MVC and SQL setup.</li>
+    <li> Andrew(AL): Initial Project Plan documentation. Image processing for model. Trello setup.</li>
 </ul>
 Tasks are not exclusive to members. We will assist each other as neccessary.<br>
 
@@ -106,3 +106,12 @@ All members discuss demonstration preparation. <br>
 
 <h1>February 23, 2023</h1>
 TN + MF: Added some action listener functionality. <br>
+
+
+<h1>February 24, 2023</h1>
+MT: Dictionary complete. Implemented. <br>
+Tested complete application run. Issue with deepnet. Trying to resolve deepnet dependency compile error. <br>
+MF + AL: Event/Action listeners implemented. Tested. <br>
+
+<h1>February 25, 2023</h1>
+MF + AL: Troubleshooting deepnet issue. Possibly fixed. Awaiting more testing. <br>
