@@ -115,3 +115,10 @@ MF + AL: Event/Action listeners implemented. Tested. <br>
 
 <h1>February 25, 2023</h1>
 MF + AL: Troubleshooting deepnet issue. Possibly fixed. Awaiting more testing. <br>
+
+
+<h1>February 26, 2023</h1>
+Deepnet dependency fixed.<br>
+Complete final touches. <br>
+Recorded brief tutorial video. <br>
+Updated README.txt. <br>
