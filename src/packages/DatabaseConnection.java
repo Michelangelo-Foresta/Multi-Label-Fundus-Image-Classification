@@ -18,6 +18,7 @@ import com.mongodb.client.model.Updates;
 
 public class DatabaseConnection {
 	private static CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
+
 	private static CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
 	private static String uri = "mongodb+srv://User1:YrqHUL2yh3xT7mLo@cluster0.woj8vsj.mongodb.net/?retryWrites=true&w=majority";
 	private static MongoClient mongoClient = MongoClients.create(uri);
@@ -27,6 +28,7 @@ public class DatabaseConnection {
 	 * TODO THese are test collections. Change them for final deployment
 	 */
 	public static MongoCollection<Patient> colPatient = database.getCollection("Test", Patient.class);
+	public static MongoCollection<Login> colLogin = database.getCollection("Login", Login.class);
 	public static MongoCollection<Diagnosis> colDiagnosis = database.getCollection("Test1", Diagnosis.class);
 	
 	public static void insertPatient(Patient patient)
@@ -70,6 +72,7 @@ public class DatabaseConnection {
 		colPatient.updateOne(filter, updateAddress);
 		colPatient.updateOne(filter, updateEmail);
 	}
+
 
 	public static void updateDiagnosis(String medicare, double disease1, double disease2, double disease3,
 									   double disease4, double disease5, double disease6, double disease7)

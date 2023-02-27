@@ -15,7 +15,6 @@ public class TrainedModel {
         BufferedImage image = null;
         ImageClassifier<BufferedImage> imageClassifier = null;
         try {
-            image = ImageIO.read(new File("C:\\Users\\15145\\Desktop\\Normal\\99_right.jpg"));
             image = ResizeImage.resizeImage(image, 128, 128);
             ConvolutionalNetwork trainedNet = null;
             trainedNet = ConvolutionalNetwork.load("src\\packages\\model\\deepNetwork1.dnet", ConvolutionalNetwork.class);

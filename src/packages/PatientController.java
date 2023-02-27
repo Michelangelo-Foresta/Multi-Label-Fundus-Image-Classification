@@ -5,14 +5,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Map;
-
+import java.util.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 public class PatientController {
+	static int i=0;
+	static JTable jtable;
+	private ArrayList<Login> lModels;
 	private PatientView view;
 	static Patient patient;
 	static String path;
@@ -20,7 +19,6 @@ public class PatientController {
 	private ArrayList<Patient> pModels;
 	private ArrayList<Diagnosis> dModels;
 	private File file;
-	PDFMethods pdfMethods = new PDFMethods();
 	private int targetWidth=128;
 	private int targetHeight=128;
 	
@@ -28,26 +26,18 @@ public class PatientController {
 		this.view = view;
 		this.pModels = new ArrayList<Patient>();
 		this.dModels = new ArrayList<Diagnosis>();
+		this.lModels = new ArrayList<Login>();
 	}
 	
 
-	public void consolePrintPatients()
-	{
-		this.view.printAllPatients(pModels);
-	}
-	
-	public void consolePrintDiagnosis()
-	{
-		this.view.printAllDiagnosis(dModels);
-	}
-	
 	/**
 	 * Run once at startup. Retrieves all entries from the database.
 	 */
 	public void retrieveAllData()
 	{
 		DatabaseConnection.colDiagnosis.find().into(this.dModels);
-		DatabaseConnection.colPatient.find().into(this.pModels);	
+		DatabaseConnection.colPatient.find().into(this.pModels);
+		DatabaseConnection.colLogin.find().into(this.lModels);
 	}
 	
 	public void insertEntry(Patient patient, Diagnosis diagnosis)
@@ -57,7 +47,7 @@ public class PatientController {
 		DatabaseConnection.insertPatient(patient);
 		DatabaseConnection.insertDiagnosis(diagnosis);	
 	}
-	
+
 	public void insertEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
@@ -74,7 +64,7 @@ public class PatientController {
 		DatabaseConnection.insertPatient(patient);
 		DatabaseConnection.insertDiagnosis(diagnosis);	
 	}
-	
+
 	public void deleteEntry(String medicare)
 	{
 		for(int i = 0; i < pModels.size(); i++)
@@ -97,6 +87,7 @@ public class PatientController {
 		DatabaseConnection.deleteDiagnosis(medicare);
 	}
 	
+
 	public void updateEntry(String firstName, String lastName, 
 			int year, int month, int day, 
 			String medicare, String address, String email,
@@ -136,7 +127,7 @@ public class PatientController {
 		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
 
 	}
-	
+
 	public Patient searchPatient(String medicare)
 	{
 		for(int i = 0; i < pModels.size(); i++)
@@ -160,72 +151,105 @@ public class PatientController {
 		}
 		return null;
 	}
+	// ----------------------------- GETTERS & SETTER -----------------------------------------
 
-	
 	public void initController() throws ClassNotFoundException {
-		
-		//handle Individual user button event from packages frame
-		view.getIndivUserButton().addActionListener(e -> {
-			try {
-				view.individualUser();
-			} catch (IOException ex) {
-				throw new RuntimeException(ex);
-			}
+		// #############################  WORK ON THIS ACTION LISTENERS   ################################################
 
-		});
-		
-		//handle the clinic user by loading the login page
-        view.getClinicButton().addActionListener(e -> {
-			
-            view.showLoginFrame();
-		});
-        
-        //handle login input event and open clinic frame if successful
-        view.getLoginButton().addActionListener(e -> {
-        	
-        	String userName = view.getUserName().getText();
-        	char[] password = view.getpasswordField().getPassword();
-        	
-        	System.out.println("userName = "+ userName + ", password ="+ String.valueOf(password));
-        	
-            //TODO: verify user name and password and if valid then open clinic frame		
-            view.showClinicFrame();
-		});
-       
         //handle language selection (EN/FR)
         view.getLanguageButton().addActionListener(e -> {
-        	//TODO: apply locale and properties files for EN/FR			
-            System.out.println("locale not implemented yet");
+        	if(view.getLanguageButton().getText().equals("French")){
+
+			}
+			else{
+
+			}
+
 		});
-         
-        //handle create patient event from clinic frame 
+
+		//#######################################    EVERYTHING BELOW IS COMPLETED    ###############################################
+
+
+		// COMPLETED
+		view.getIndivUserButton().addActionListener(e -> {
+			view.getMedicareTF().setEditable(true);
+			view.individualUser();
+			Clear(view.getIndivFrame());
+		});
+
+		// COMPLETED
+		view.getviewWholeDBButton().addActionListener(e -> {
+			i=0;
+			String[] columnNames={"Medicare","First Name","Last Name","DOB","Address","Email","G","C","H","M","D","N"};
+			String[][] rowData=new String[pModels.size()][13];
+			for (Patient y: pModels) {
+				for (Diagnosis x : dModels){
+				if (y.getMedicare().equals(x.getMedicare())){
+						rowData[i][0] = y.getMedicare();
+						rowData[i][1] = y.getFirstName();
+						rowData[i][2] = y.getLastName();
+						rowData[i][3] = y.getDobDay() + "/" + y.getDobMonth() + "/" + y.getDobYear();
+						rowData[i][4] = y.getAddress();
+						rowData[i][5] = y.getEmail();
+						rowData[i][6] = String.valueOf(x.getDisease1());
+						rowData[i][7] = String.valueOf(x.getDisease2());
+						rowData[i][8] = String.valueOf(x.getDisease3());
+						rowData[i][9] = String.valueOf(x.getDisease4());
+						rowData[i][10] = String.valueOf(x.getDisease5());
+						rowData[i][11] = String.valueOf(x.getDisease6());
+						rowData[i][12] = String.valueOf(x.getDisease7());
+						i++;
+					}
+				}
+			}
+			jtable=new JTable(rowData,columnNames);
+			view.showDb(jtable);
+			rowData=null;
+		});
+
+		// COMPLETED
+		view.getClinicButton().addActionListener(e -> {
+			view.showLoginFrame();
+		});
+
+		// COMPLETED
+		view.getLoginButton().addActionListener(e -> {
+			if(verifyLogin(view.getUserName().getText(),view.getpasswordField().getText()))
+				view.showClinicFrame();
+			else
+				JOptionPane.showMessageDialog(null, "Incorrect password or username" ,"Info", JOptionPane.INFORMATION_MESSAGE);
+
+		});
+
+        // COMPLETED
         view.getcreatePatientButton().addActionListener(e -> {
-         	
-         	//String userName = view.getUserName().getText();
-         	
-         	//System.out.println("userName = "+ userName + ", passord ="+ String.valueOf(password));
-         	
-             //TODO: verify user name and password and if valid then open clinic frame		
-             view.showPatientFrame();
+			view.showPatientFrame();
+			Clear(view.getPatientFrame());
+			view.getMedicareTF().setEditable(true);
+
  		});
         
-        //handle update patient event from clinic frame
+        // COMPLETED
         view.getUpdatePatientButton().addActionListener(e -> {
-         	
-            //String userName = view.getUserName().getText();
-         	
-         	//System.out.println("userName = "+ userName + ", password ="+ String.valueOf(password));
-       	
-            view.showPatientFrame();
+			view.getMedicareTF().setEditable(true);
+			view.getMedicareTF().setText(null);
+			view.searchPatient();
  		});
+
+		// COMPLETED
 		view.getExport().addActionListener(e->{
+			view.getExport().setEnabled(false);
 			try {
 				PDFMethods.createPDF(patient, disease, path);
+				view.getExport().setEnabled(false);
 			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
 		});
+
+		// COMPLETED
         view.getCreatePatient().addActionListener(e->{
+			view.getCreatePatient().setEnabled(false);
 			patient = new Patient(view.getfNameTF().getText(), view.getlNameTF().getText(),
 					Integer.parseInt(view.getDobYearTF().getText()), Integer.parseInt(view.getDobMonthTF().getText()), Integer.parseInt(view.getDobDayTF().getText()),
 			view.getMedicareTF().getText(), view.getAddressTF().getText(), view.getEmailAddressTF().getText());
@@ -233,11 +257,48 @@ public class PatientController {
 			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
 			int result = fileChooser.showOpenDialog(null);
-			System.out.println("result = "+ result);
 			if (result == JFileChooser.APPROVE_OPTION)
 			{
 				this.file=fileChooser.getSelectedFile();
-				System.out.println("Selected file: " + this.file.getName());
+				try {
+
+					JFrame window= new JFrame();
+					path = this.file.getParent();
+					ImageIcon con= new ImageIcon(this.file.toURL());
+					window.setVisible(true);
+					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					JLabel label=new JLabel();
+					label.setIcon(con);
+
+					BufferedImage in = ImageIO.read(this.file);
+					BufferedImage newImg= new BufferedImage(in.getWidth(),in.getHeight(),BufferedImage.TYPE_INT_ARGB);
+					newImg=ResizeImage.resizeImage(newImg, targetWidth, targetHeight);
+					window.setSize(con.getIconWidth(),con.getIconHeight());
+					window.getContentPane().add(label);
+					disease =TrainedModel.getDiagnosis(newImg);
+					DatabaseConnection.insertPatient(patient);
+					view.getExport().setEnabled(true);
+
+				} catch (IOException ex) {
+					throw new RuntimeException(ex);
+				}
+
+			}
+		});
+
+        // COMPLETED
+        view.getCreateButton().addActionListener(e -> {
+			view.getCreateButton().setEnabled(true);
+			patient = new Patient(view.getfNameTF().getText(), view.getlNameTF().getText(),
+					Integer.parseInt(view.getDobYearTF().getText()), Integer.parseInt(view.getDobMonthTF().getText()), Integer.parseInt(view.getDobDayTF().getText()),
+					view.getMedicareTF().getText(), view.getAddressTF().getText(), view.getEmailAddressTF().getText());
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+			int result = fileChooser.showOpenDialog(null);
+			if (result == JFileChooser.APPROVE_OPTION)
+			{
+				this.file=fileChooser.getSelectedFile();
 				try {
 
 					JFrame window= new JFrame();
@@ -253,120 +314,70 @@ public class PatientController {
 					window.setSize(con.getIconWidth(),con.getIconHeight());
 					window.getContentPane().add(label);
 					disease =TrainedModel.getDiagnosis(newImg);
-					view.getExport().setEnabled(true);
-				//	PDFMethods.exportPdfClient(disease,patient);// ADD PDF METHOD
-					System.out.println(disease +"\n"+patient);
-
+					Diagnosis diagnosis = new Diagnosis(patient.getMedicare(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
+					insertEntry(patient,diagnosis);
+					view.getCreateButton().setEnabled(false);
 				} catch (IOException ex) {
 					throw new RuntimeException(ex);
 				}
-
 			}
-		});
-        //handle the create patient having the patient info and opening update DB frame
-        view.getCreateButton().addActionListener(e -> {
 
-         	String firstName = view.getfNameTF().getText();
-         	String lastName = view.getlNameTF().getText();
-         	
-         	System.out.println("First Name = "+ firstName + ", Last Name ="+ lastName);
-         	
-            //TODO: add patien""t	
-         	view.updateDBFrame();
  		});
         
-       //handle search patient event and if patient found open the update DB frame to get input and update DB
+       // COMPLETED
         view.getSearchButton().addActionListener(e -> {
-         	
-         	String firstName = view.getfNameTF().getText();
-         	String lastName = view.getlNameTF().getText();
-         	
-         	System.out.println("First Name = "+ firstName + ", Last Name ="+ lastName);
-         	
-            //TODO: after finding patient, get the input file and update database
-         	//replace the following code, this is just for testing very simple case
-         	if(firstName.equals(""))
+         	Patient p1=searchPatient(view.getMedicareTF().getText());
+			Diagnosis d1=searchDiagnosis(view.getMedicareTF().getText());
+
+         	if(searchPatient(view.getMedicareTF().getText())!=null)
          	{
-         		view.displayResultMessage("user not found");
+				view.updateDBFrame();
+				view.getfNameTF().setText(p1.getFirstName());
+				view.getlNameTF().setText(p1.getLastName());
+				view.getDobYearTF().setText(String.valueOf(p1.getDobYear()));
+				view.getDobDayTF().setText(String.valueOf(p1.getDobDay()));
+				view.getDobMonthTF().setText(String.valueOf(p1.getDobMonth()));
+				view.getAddressTF().setText(p1.getAddress());
+				view.getEmailAddressTF().setText(p1.getEmail());
+				view.getMedicareTF().setEditable(false);
          	}
          	else
          	{
-             	view.updateDBFrame();
+				view.displayResultMessage("user not found");
          	}
+
  		});
-        
-        //handle input file in update DB frame
-        view.getInputImageButton().addActionListener(e -> {
-			
-			
-			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-			int result = fileChooser.showOpenDialog(null);
-			System.out.println("result = "+ result);
-			if (result == JFileChooser.APPROVE_OPTION) 
-			{
-				this.file = fileChooser.getSelectedFile();
-				System.out.println("Selected file: " + this.file.getName());
-				//TODO: the selected file will be used to update the DB after clicking the updateDB button
-				
-			}
-		});
-        
-        //handle update DB event in update DB frame
+
+        // COMPLETED
         view.getUpdateDBButton().addActionListener(e -> {
-			
-			
-			System.out.println("update DB with file = "+ this.file.getName() );
-			//TODO add update DB code
-			
+			// UPDATING DB VALUES
+			updateEntry(view.getfNameTF().getText(),view.getlNameTF().getText(),Integer.parseInt(view.getDobYearTF().getText()),Integer.parseInt(view.getDobMonthTF().getText()),Integer.parseInt(view.getDobDayTF().getText()),view.getMedicareTF().getText(),
+					view.getAddressTF().getText(),view.getEmailAddressTF().getText(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
+			view.pressDBButton();
+
 		});
-        
-        //handle view whole DB event
-        view.getviewWholeDBButton().addActionListener(e -> {
-			consolePrintPatients();
-			System.out.println("view whole DB = ");
-			//TODO add view whole DB code
-			
-		});
-        
+
     }
-	
-	// Getters and setters
 
-	public PatientView getView() {
-		return this.view;
+	public Boolean verifyLogin(String userName, String password)
+	{
+		return Login.correctLogin(userName, password, lModels);
 	}
 
-	public void setView(PatientView view) {
-		this.view = view;
+	public static void Clear(JFrame intFrame)
+	{
+		if (intFrame == null)
+			return;
+		Container con = intFrame.getContentPane();
+		for (Component c : con.getComponents())
+		{
+			if (c instanceof JTextField)
+			{
+				JTextField j = (JTextField)c;
+				j.setText("");
+			}
+		}
 	}
 
-	public ArrayList<Patient> getpModels() {
-		return pModels;
-	}
 
-	public void setpModels(ArrayList<Patient> pModels) {
-		this.pModels = pModels;
-	}
-
-	public ArrayList<Diagnosis> getdModels() {
-		return dModels;
-	}
-
-	public void setdModels(ArrayList<Diagnosis> dModels) {
-		this.dModels = dModels;
-	}
-
-	public final File getFile() {
-		return file;
-	}
-
-	public final void setFile(File file) {
-		this.file = file;
-	}
-
-	public static void convert() {
-
-
-	}
 }
