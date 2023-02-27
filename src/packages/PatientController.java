@@ -126,6 +126,28 @@ public class PatientController {
 		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
 		
 	}
+	
+	public void updateEntry(String firstName, String lastName, 
+			int year, int month, int day, 
+			String medicare, String address, String email
+			)
+	{
+		for(int i = 0; i < pModels.size(); i++)
+		{
+			if(pModels.get(i).getMedicare().equals(medicare))
+			{
+				pModels.get(i).setFirstName(firstName);
+				pModels.get(i).setLastName(lastName);
+				pModels.get(i).setDobDay(day);
+				pModels.get(i).setDobMonth(month);
+				pModels.get(i).setDobYear(year);
+				pModels.get(i).setAddress(address);
+				pModels.get(i).setEmail(email);
+			}
+		}
+		
+		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
+	}
 
 	public Patient searchPatient(String medicare)
 	{
@@ -320,7 +342,8 @@ public class PatientController {
 					window.getContentPane().add(label);
 					disease =TrainedModel.getDiagnosis(newImg);
 					Diagnosis diagnosis = new Diagnosis(patient.getMedicare(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
-					insertEntry(patient,diagnosis);
+					if(searchPatient(patient.getMedicare())== null)
+						insertEntry(patient,diagnosis);
 					view.getCreateButton().setEnabled(false);
 				} catch (IOException ex) {
 					throw new RuntimeException(ex);
@@ -356,8 +379,12 @@ public class PatientController {
         // COMPLETED
         view.getUpdateDBButton().addActionListener(e -> {
 			// UPDATING DB VALUES
-			updateEntry(view.getfNameTF().getText(),view.getlNameTF().getText(),Integer.parseInt(view.getDobYearTF().getText()),Integer.parseInt(view.getDobMonthTF().getText()),Integer.parseInt(view.getDobDayTF().getText()),view.getMedicareTF().getText(),
-					view.getAddressTF().getText(),view.getEmailAddressTF().getText(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
+        	if(disease==null)
+        		updateEntry(view.getfNameTF().getText(),view.getlNameTF().getText(),Integer.parseInt(view.getDobYearTF().getText()),Integer.parseInt(view.getDobMonthTF().getText()),Integer.parseInt(view.getDobDayTF().getText()),view.getMedicareTF().getText(),
+        				view.getAddressTF().getText(),view.getEmailAddressTF().getText());
+        	else
+        		updateEntry(view.getfNameTF().getText(),view.getlNameTF().getText(),Integer.parseInt(view.getDobYearTF().getText()),Integer.parseInt(view.getDobMonthTF().getText()),Integer.parseInt(view.getDobDayTF().getText()),view.getMedicareTF().getText(),
+        				view.getAddressTF().getText(),view.getEmailAddressTF().getText(),disease.get("Macular-Degen"),disease.get("Glauc"),disease.get("Cats"),disease.get("Hyper"),disease.get("Myopia"),disease.get("Non-Prolif"),disease.get("Normal"));
 			view.pressDBButton();
 
 		});
