@@ -125,8 +125,9 @@ public class PatientController {
 
 		// COMPLETED
 		view.getviewWholeDBButton().addActionListener(e -> {
-			pModels=getpModels();
-			dModels=getdModels();
+			// #############################    UPDATED THE DB BEFORE
+
+
 			i=0;
 			String[] columnNames={"Medicare","First Name","Last Name","DOB","Address","Email","G","C","H","M","D","N"};
 			String[][] rowData=new String[pModels.size()][13];
