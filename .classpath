@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="src">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -12,5 +16,16 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/bcpg-jdk15on-1.64.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/bcprov-jdk15on-1.64.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/deepnetts-core-pro-3.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/deepnetts-core-pro-3.0.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/deepnetts-license-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/json-20170516.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/license3j-2.0.0-JVM8.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/visrec-api-1.0.5.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/visrec-ri-1.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/System-Development-Project/DeepNettsEngine/visrec-ri-1.0.3-javadoc.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

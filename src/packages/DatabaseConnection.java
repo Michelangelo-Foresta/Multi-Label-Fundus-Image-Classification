@@ -24,12 +24,9 @@ public class DatabaseConnection {
 	private static MongoClient mongoClient = MongoClients.create(uri);
 	private static MongoDatabase database = mongoClient.getDatabase("SystemDevDB")
 			.withCodecRegistry(pojoCodecRegistry);
-	/*
-	 * TODO THese are test collections. Change them for final deployment
-	 */
-	public static MongoCollection<Patient> colPatient = database.getCollection("Test", Patient.class);
+	public static MongoCollection<Patient> colPatient = database.getCollection("Patient", Patient.class);
 	public static MongoCollection<Login> colLogin = database.getCollection("Login", Login.class);
-	public static MongoCollection<Diagnosis> colDiagnosis = database.getCollection("Test1", Diagnosis.class);
+	public static MongoCollection<Diagnosis> colDiagnosis = database.getCollection("Diagnosis", Diagnosis.class);
 	
 	public static void insertPatient(Patient patient)
 	{

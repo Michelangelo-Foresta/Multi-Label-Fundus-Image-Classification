@@ -14,6 +14,6 @@ public class Main {
         PatientController pController = new PatientController(view);
         pController.retrieveAllData();
         pController.initController();
-
+        
     }
 }
