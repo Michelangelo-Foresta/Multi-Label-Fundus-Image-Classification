@@ -175,25 +175,18 @@ public class PatientView {
 	public JButton getExport() {
 		return export;
 	}
-	public JButton getUpdatePatientButton() {
-		return updatePatientButton;
-	}
 	public JButton getCreateButton() {
 		return createButton;
+	}
+	public JButton getUpdatePatientButton() {
+		return updatePatientButton;
 	}
 	public JButton getSearchButton() {
 		return searchButton;
 	}
 	public JButton getUpdateDBButton(){return updateDBButton;}
-
-    public JTextField getUserName() {
-        return userNameText;
-    }
-    public JPasswordField getpasswordField() {
-        return passwordFiled;
-    }
-	
-
+	public String getUserNameText() {return userNameText.getText();}
+	public String getPasswordFiled() {return passwordFiled.getText();}
 	public void pressDBButton() {viewDBButton.doClick();}
 	
 
@@ -202,6 +195,9 @@ public class PatientView {
 	}
 	public JTextField getlNameTF() {
 		return lNameTF;
+	}
+	public JTextField getDobMonthTF() {
+		return dobMonthTF;
 	}
 	public JTextField getMedicareTF() {
 		return medicareTF;
@@ -215,9 +211,7 @@ public class PatientView {
 	public JTextField getDobYearTF() {
 		return dobYearTF;
 	}
-	public JTextField getDobMonthTF() {
-		return dobMonthTF;
-	}
+
 	public JTextField getDobDayTF() {
 		return dobDayTF;
 	}
@@ -234,12 +228,25 @@ public class PatientView {
 	public void setDobYearTF(JTextField dobYearTF) {
 		this.dobYearTF = dobYearTF;
 	}
-	public void setDobMonthTF(JTextField dobMonthTF) {
-		this.dobMonthTF = dobMonthTF;
-	}
+
 	public void setDobDayTF(JTextField dobDayTF) {
 		this.dobDayTF = dobDayTF;
 	}
+
+
+	public void setDobMonthTF(JTextField dobMonthTF) {
+		this.dobMonthTF = dobMonthTF;
+	}
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 	public void displayResultMessage(String message)
@@ -774,7 +781,6 @@ public void searchPatient(){
 		showDb.getContentPane().add(table.getTableHeader(), BorderLayout.PAGE_START);
 		showDb.getContentPane().add(table, BorderLayout.CENTER);
 	}
-
 
 
 

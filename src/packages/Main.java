@@ -9,6 +9,7 @@ public class Main {
 
         // object of Patient
         Patient patient = new Patient();
+
         PatientView view = new PatientView("Eye Disease Diagnostic System");
         PatientController pController = new PatientController(view);
         pController.retrieveAllData();

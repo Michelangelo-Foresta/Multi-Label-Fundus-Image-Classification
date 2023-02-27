@@ -11,13 +11,13 @@ import javax.swing.*;
 public class PatientController {
 	static int i=0;
 	static JTable jtable;
-	private ArrayList<Login> lModels;
 	private PatientView view;
 	static Patient patient;
 	static String path;
 	static Map<String,Float> disease;
 	private ArrayList<Patient> pModels;
 	private ArrayList<Diagnosis> dModels;
+	private ArrayList<Login> lModels;
 	private File file;
 	private int targetWidth=128;
 	private int targetHeight=128;
@@ -28,7 +28,6 @@ public class PatientController {
 		this.dModels = new ArrayList<Diagnosis>();
 		this.lModels = new ArrayList<Login>();
 	}
-	
 
 	/**
 	 * Run once at startup. Retrieves all entries from the database.
@@ -125,7 +124,7 @@ public class PatientController {
 		}
 		DatabaseConnection.updatePatient(medicare, firstName, lastName, day, month, year, address, email);
 		DatabaseConnection.updateDiagnosis(medicare, disease1, disease2, disease3, disease4, disease5, disease6,disease7);
-
+		
 	}
 
 	public Patient searchPatient(String medicare)
@@ -152,6 +151,12 @@ public class PatientController {
 		return null;
 	}
 	// ----------------------------- GETTERS & SETTER -----------------------------------------
+
+	public Boolean verifyLogin(String userName, String password)
+	{
+		return Login.correctLogin(userName, password, lModels);
+	}
+	
 
 	public void initController() throws ClassNotFoundException {
 		// #############################  WORK ON THIS ACTION LISTENERS   ################################################
@@ -214,7 +219,7 @@ public class PatientController {
 
 		// COMPLETED
 		view.getLoginButton().addActionListener(e -> {
-			if(verifyLogin(view.getUserName().getText(),view.getpasswordField().getText()))
+			if(verifyLogin(view.getUserNameText(),view.getPasswordFiled()))
 				view.showClinicFrame();
 			else
 				JOptionPane.showMessageDialog(null, "Incorrect password or username" ,"Info", JOptionPane.INFORMATION_MESSAGE);
@@ -359,10 +364,6 @@ public class PatientController {
 
     }
 
-	public Boolean verifyLogin(String userName, String password)
-	{
-		return Login.correctLogin(userName, password, lModels);
-	}
 
 	public static void Clear(JFrame intFrame)
 	{
