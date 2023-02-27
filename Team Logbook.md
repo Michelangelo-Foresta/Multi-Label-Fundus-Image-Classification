@@ -122,3 +122,4 @@ Deepnet dependency fixed.<br>
 Complete final touches. <br>
 Recorded brief tutorial video. <br>
 Updated README.txt. <br>
+Final team logbook entry, project ready for submission. <br>
