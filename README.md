@@ -10,3 +10,6 @@ Cloud database access for all will be revoked when the grades are released. <br>
 <h1>Login information</h1>
 user = user<br>
 password = password<br>
+
+<h1>Export PDF</h1>
+When using the individual user interface, the export pdf option will automatically export the pdf file with results in  to the parent directory of the path of the image uploaded for diagnosis.
