@@ -2,8 +2,8 @@
 420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project repository<br>
 Michelangelo Forest, Student# 1462828<br>
 Andrew Lansangan, Student# 1377569<br>
-Thomas Ng, Student# 2295229<br>
-Mike Taheri, Student# 0964831<br>
+<a href="https://github.com/Thomas-Ng-dev">Thomas Ng</a>, Student#2295229 <br>
+Mike Taheri, Student#0964831<br>
 
 Cloud database access for all will be revoked when the grades are released. <br>
 
