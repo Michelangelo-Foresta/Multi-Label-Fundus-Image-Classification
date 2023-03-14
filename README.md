@@ -1,9 +1,9 @@
 # System-Development-Project
-420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project repository<br>
-Michelangelo Forest, Student# 1462828<br>
-Andrew Lansangan, Student# 1377569<br>
-<a href="https://github.com/Thomas-Ng-dev">Thomas Ng</a>, Student#2295229 <br>
-Mike Taheri, Student#0964831<br>
+<h1>420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project:</h1><br>
+Michelangelo Foresta, Student id: 1462828<br>
+<a href="https://github.com/inmyownwords7">Andrew Lansangan</a>, Student id: 1377569<br>
+<a href="https://github.com/Thomas-Ng-dev">Thomas Ng</a>, Student id: 2295229 <br>
+<a href="https://github.com/miketaheri">Mike Taheri</a>, Student id: 0964831<br>
 
 Cloud database access for all will be revoked when the grades are released. <br>
 
