@@ -18,25 +18,24 @@ When using the individual user interface, the export pdf option will automatical
 The dataset used was downloaded from <a href="https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k">Kaggle</a>.
 
 <h1>Process</h1>
-Translation in french is an option for those who would prefer:
+<h3>Translation in french is an option for those who would prefer</h3>
 
 ![Screenshot 2023-03-14 124754](https://user-images.githubusercontent.com/101988331/225083686-88b24934-c9e6-4234-b9a8-50d35e7ef909.png)
 
 
-![Screenshot 2023-03-14 124754](https://user-images.githubusercontent.com/101988331/225080935-63152b66-46ef-43f9-841b-102935067207.png)
-
-Main menu has 2 options, the first option is for use for individual eye exams. (results would be exported as a pdf into the parent directory of the image uploaded)
+<h3>Main menu has 2 options, the first option is for use for individual eye exams. Results would be exported as a pdf into the parent directory of the image uploaded</h3>
 
 ![Screenshot 2023-03-14 125027](https://user-images.githubusercontent.com/101988331/225081642-186acb14-8575-42b0-b44d-412c2f7c9ae2.png)
 
-When the information is filled out and the image is uploaded the export option would be enabled:
+<h3>When the information is filled out and the image is uploaded the export option would be enabled</h3>
 
 ![Screenshot 2023-03-14 125549](https://user-images.githubusercontent.com/101988331/225081739-d575e1bb-bc66-4170-9104-66cf47c183b0.png)
 
-Clinic option prompts username and password:
+<h3>Clinic option prompts username and password</h3>
 
 ![Screenshot 2023-03-14 125706](https://user-images.githubusercontent.com/101988331/225082250-1219ecff-477c-468f-932e-e27ac1b6988d.png)
 
-From there you would have the option to update patient information, create a new patient or view the entire database:
+<h3>From there you would have the option to update patient information, create a new patient or view the entire database</h3>
+
 ![Screenshot 2023-03-14 130431](https://user-images.githubusercontent.com/101988331/225082852-de73c703-483b-46d2-b53d-e2bbdf2dee9d.png)
 
