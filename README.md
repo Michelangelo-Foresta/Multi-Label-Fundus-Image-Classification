@@ -1,5 +1,5 @@
 # System-Development-Project
-<h1> :warning: This model is not accurate due to lack of time :warning: </h1>
+<h1> :warning: </h1><h3> Model is not accurate given limited time </h3><h1> :warning: </h1>
 <h1>420-940-VA SYSTEM DEVELOPMENT section 05800, Team Project:</h1><br>
 Michelangelo Foresta, Student id: 1462828<br>
 <a href="https://github.com/inmyownwords7">Andrew Lansangan</a>, Student id: 1377569<br>
